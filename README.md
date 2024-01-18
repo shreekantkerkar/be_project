@@ -9,14 +9,7 @@ The proposed system aims to completely automate the hiring process. This is main
 
 This system generates a report at the end of the interview evaluating the interviewee and grading him/her.
 
- [Click here to view the Plublished paper](https://ieeexplore.ieee.org/document/10126463)
 
-Collaborators : 
-1. Aadesh Kabra
-2. Atharv Kinage
-3. Ketan Gangwal
-4. Kshitij Chaudhari
-5. Kirti Agarwal
 
 
 
