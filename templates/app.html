@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume Classification</title>
+    <link rel="stylesheet" href="app.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans&family=Roboto+Mono:wght@500&display=swap');
+        h1{
+            color: #2B3467;
+            text-align: center;
+            font-family: 'Roboto Mono', monospace;
+        }
+
+        body{
+            background-color: #FCFFE7;
+        }
+
+        form{
+            margin-top: 4em;
+            margin-left: 15em;
+            /* align-items: ce  nter; */
+            font-size: 20px;
+            font-family: 'Josefin Sans', sans-serif;
+            color: #2B3467;
+        }
+
+        #input{
+            font-size: 20px;
+            padding: 5px;
+        }
+
+        #button{
+            font-size: 20px;
+            padding: 5px;
+            display: block;
+            margin-left: 17em;
+            margin-top: 3em;
+            color: #FCFFE7;
+            background-color: #EB455F;
+            border-radius: 5px;
+            width: 5em;
+            font-family: 'Josefin Sans', sans-serif;
+        }
+
+        #button:hover{
+            box-shadow: 2px 2px 1px 2px #000000;
+            cursor: pointer;
+            color: #2B3467;
+            background-color: #fdfef0;
+        }
+
+        #image{
+            height: 300px;
+            width: 500px;
+            margin-left: 27em;
+            margin-top: 2em;
+        }
+    </style>
+</head>
+<body>
+    <h1 >Resume Classification</h1>
+    <img src="images.jpg" id="image">
+    <form action = "/success" method = "post" enctype="multipart/form-data">  
+        <label for="file1">Upload job description: </label>
+        <input type="file" name="file1" id="input1"/>  
+        <label for="file2">Upload Resume: </label>
+        <input type="file" name="file2" id="input2"/>  
+        <input type = "submit" value="Upload" id="button"> 
+    </form>  
+
+    <script>
+        
+    </script>
+</body>
+</html>

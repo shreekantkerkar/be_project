@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>End of Interview</title>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans&family=Roboto+Mono:wght@500&display=swap');
+
+      body {
+        background-image: url('/static/bg3.jpeg');
+        background-size: cover;
+        background-color: #ffffff;
+      }
+
+      h1 {
+        color: #eb455f;
+        text-align: center;
+        font-family: 'Roboto Mono', monospace;
+        margin-top: 2em;
+      }
+
+      h2 {
+        font-family: 'Josefin Sans', sans-serif;
+        color: #eb455f;
+        text-align: center;
+        /* font-family: 'Roboto Mono', monospace; */
+        margin-top: 2em;
+      }
+
+      h3 {
+        color: #2b3467;
+        margin-left: 2em;
+        margin-top: 4em;
+      }
+
+      ul {
+        color: #2b3467;
+        font-size: 20px;
+        margin-top: 3em;
+        margin-left: 5em;
+      }
+      p {
+        color: #2b3467;
+        font-size: 20px;
+        margin-top: 3em;
+        margin-left: 5em;
+      }
+
+      p{
+        color: #2B3467;
+        font-size: 20px;
+        margin-top: 3em;
+      }
+    </style>
+  </head>
+  <body>
+    <center>
+      <h1>INTERVIEW FINISHED</h1>
+    </center>
+    <p>Interview score: {{interview_score}}</p>
+    <ul>
+      {% for question in questions %}
+      <li>{{question}}</li>
+      {% endfor %}
+    </ul>
+  </body>
+</html>

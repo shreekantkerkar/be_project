@@ -1,0 +1,12 @@
+confidence: 39.29%	 nervousness: 28.57%	 neutral: 64.29
+confidence: 16.67%	 nervousness: 66.67%	 neutral: 33.33
+confidence: 23.08%	 nervousness: 53.85%	 neutral: 46.15
+confidence: 14.29%	 nervousness: 71.43%	 neutral: 28.57
+confidence: 6.82%	 nervousness: 86.36%	 neutral: 13.64
+confidence: 35.42%	 nervousness: 50.0%	 neutral: 29.17
+confidence: 25.0%	 nervousness: 50.0%	 neutral: 50.0
+confidence: 31.25%	 nervousness: 37.5%	 neutral: 62.5%
+confidence: 42.86%	 nervousness: 14.29%	 neutral: 85.71%
+confidence: 37.5%	 nervousness: 25.0%	 neutral: 75.0%
+confidence: 0.0%	 nervousness: 100.0%	 neutral: 0.0%
+confidence: 50.0%	 nervousness: 0.0%	 neutral: 100.0%
