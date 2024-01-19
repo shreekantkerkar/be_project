@@ -1,7 +1,6 @@
 from pdfminer.high_level import extract_text
 import docx2txt
 import re
-# import spacy
 import nltk
 from nltk.tokenize import RegexpTokenizer
 from nltk.tokenize import sent_tokenize, word_tokenize

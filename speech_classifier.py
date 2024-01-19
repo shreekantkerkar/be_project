@@ -33,7 +33,7 @@ def extract_mfcc(filename): #
     return mfcc
 
 def audio_classifier():
-                filename = "candidate_answer.wav"
+                filename = "originalCandidateAnswer.wav"
                 try:
                     shutil.copyfile("candidate_answer.wav", "./originalCandidateAnswer.wav")
                 except:
@@ -46,7 +46,7 @@ def audio_classifier():
                 # f = 440.0              # sound frequency (Hz)
                 # wavio.write("sine24.wav", x, rate, sampwidth=3)
 
-                freq = 44100  # audio sampling rate
+                freq = 48000  # audio sampling rate
                 x = np.sin(2*np.pi * freq * t) #generate sine wave
                 wv.write(filename, x, freq, sampwidth=4) #write audio file
                 
@@ -58,12 +58,12 @@ def audio_classifier():
                     audio_result = speech_model.predict(feature) #predicting 
                 except Exception as e:
                     print("Expection in speech detection:", e)
-                print(audio_result)
+                # print(audio_result)
                 audio_result = np.argmax(audio_result)
-                print(audio_result)
+                # print(audio_result)
                 audio_result = labels[audio_result]
                 speech_ouput.append(audio_result)
-                print(speech_ouput)
+                # print(speech_ouput)
                 file1 = open("speech_result.txt", "a")
                 file1.write(audio_result)
                 file1.write("\n")

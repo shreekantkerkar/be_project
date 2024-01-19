@@ -224,7 +224,7 @@ def upload_file():
         # f = request.files['file']
 
         f = request.files['file'].read()
-        npimg = np.fromstring(f, np.uint8)
+        npimg = np.frombuffer(f, dtype=np.uint8)
         img = cv2.imdecode(npimg, cv2.IMREAD_GRAYSCALE)
         face_properties = face_classifier.classify(img, face_detector, model)
         # label = face_properties[0]['label']
@@ -253,7 +253,7 @@ def interview():
 @app.route('/start', methods=['POST'])
 def start():
     try:
-    #start video interview from frontend 
+        # start video interview from frontend 
         file = open('report_file.txt', 'r', encoding='utf-8', errors='ignore')
         data = file.readlines()
         text = []
@@ -280,12 +280,13 @@ def start():
         interview_score = 0
 
         interview_score = utility_functions.ask_first_question(df, count, driver)
-        print(interview_score)
+        # print(interview_score)
         
         return render_template("success.html", interview_score=interview_score, questions=utility_functions.asked)
     except Exception as e:
         print(e)
         return 'Internal Server Error', 500
+
 
 
 @app.route('/updatequestion')

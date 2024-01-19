@@ -1,6 +1,5 @@
 # from tf.keras.utils.image_utils import img_to_array
 from tensorflow.keras.preprocessing.image import img_to_array
-# from tensorflow.keras.utils.image_utils import img_to_array
 import cv2
 import json
 import numpy as np

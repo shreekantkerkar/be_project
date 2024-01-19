@@ -50,16 +50,11 @@ def set_question_flag():
 
 def text_to_speech(Text):
     global count
-    # # Text.replace(Text[0], 'Next ') #put where this function is called
-    # # Text.replace(Text[1], 'Question')
     Text = Text[2:]
     tts = 'tts'
     tts = gTTS(text=Text, lang = 'en')
     file1 = str("hello" + str(count) + ".mp3")
     tts.save(file1)
-    # playsound.playsound(file1,True)
-    # tts = gTTS(Text)
-    # tts.save("hello.mp3")
     mixer.init()
     mixer.music.load(file1)
     mixer.music.play()
@@ -67,67 +62,70 @@ def text_to_speech(Text):
     while mixer.music.get_busy() == True: #this is to make sure the audio is playing 
         continue
     flag = True
-    # print('after')
-    # # os.remove(file1)
-    # return
-    # Text = Text[2:]
-
-    # engine = pyttsx3.init()
-    # engine.setProperty('rate', 150)
-    # engine.say(Text)
-    # engine.runAndWait()
 
 
 def speech_to_text():
     chunk = 1024
     sample_format = pyaudio.paInt16
     channels = 1
-    fs = 44100  # frames per channel
-    seconds = 5
+    fs = 48000  # frames per channel
+    seconds = 30
 
-    filename = "candidate_answer.wav"
+    filename = "originalCandidateAnswer.wav"
 
     p = pyaudio.PyAudio()
 
-    print("Speech Recording ...")
-
-    stream = p.open(format=sample_format,
-                    channels=channels,
-                    rate=fs,
-                    frames_per_buffer=chunk,
-                    input=True)
-
-    frames = []
-    for i in range(0, int(fs / chunk * seconds)):
-        data = stream.read(chunk)
-        frames.append(data)
-
-    stream.stop_stream()
-    stream.close()
-    p.terminate()
-
-    print("... Ending Speech Recording")
-    with wave.open(filename, 'wb') as wf:
-        wf.setnchannels(channels)
-        wf.setsampwidth(p.get_sample_size(sample_format))
-        wf.setframerate(fs)
-        wf.writeframes(b''.join(frames))
-        wf.close()
-
-    r = sr.Recognizer()
-
-    savedAudio = sr.AudioFile('candidate_answer.wav')
-
-    with savedAudio as source:
-        audio = r.record(source)
     try:
-        s = r.recognize_google(audio)
-        return str(s)
+        print("Speech Recording ...")
+
+        stream = p.open(format=sample_format,
+                        channels=channels,
+                        rate=fs,
+                        frames_per_buffer=chunk,
+                        input=True)
+
+        frames = []
+        for i in range(0, int(fs / chunk * seconds)):
+            data = stream.read(chunk)
+            frames.append(data)
+
+        stream.stop_stream()
+        stream.close()
+        p.terminate()
+
+        print("... Ending Speech Recording")
+
+        with wave.open(filename, 'wb') as wf:
+            wf.setnchannels(channels)
+            wf.setsampwidth(p.get_sample_size(sample_format))
+            wf.setframerate(fs)
+            wf.writeframes(b''.join(frames))
+
+        recognizer = sr.Recognizer()
+
+        with sr.AudioFile(filename) as source:
+            audio = recognizer.record(source)
+
+        try:
+            text = recognizer.recognize_google(audio)
+            print("Recognized Text:", text)
+
+            # Save the recognized text into a file
+
+            return text
+        except sr.UnknownValueError:
+            print("Google Speech Recognition could not understand audio")
+            return None
+        except sr.RequestError as e:
+            print(f"Could not request results from Google Speech Recognition service; {e}")
+            return None
     except Exception as e:
-        print("Exception: " + str(e))
-        return str(e)
+        print(f"An unexpected error occurred: {e}")
+        return None
 
 
+
+# used to check the similarity between candidate response and acutal answer
 def context(string1, string2):
     model = SentenceTransformer('all-MiniLM-L6-v2')
     sentences1 = [string1]
@@ -135,11 +133,12 @@ def context(string1, string2):
 
     embeddings1 = model.encode(sentences1, convert_to_tensor=True)
     embeddings2 = model.encode(sentences2, convert_to_tensor=True)
-    cosine_scores = util.cos_sim(embeddings1, embeddings2)
-    # print(string1, string2, cosine_scores[(0, 0)])
-    # print(string1, string2, cosine_scores[0][0])
-    print(cosine_scores[0][0])
-    return cosine_scores[0][0]
+    
+    cosine_scores = util.cos_sim(embeddings1, embeddings2).item()  # Convert tensor to Python float
+    similarity = int(cosine_scores * 100)  # Convert float to integer percentage (multiply by 100)
+    print(similarity)
+    return similarity
+
 
 
 def start_driver():
@@ -152,24 +151,28 @@ def next_question(similarity, x, data, driver):
     global interview_score
     subjects = list(data['Subject'].unique())
 
-    if similarity*100 > 75:
+    if similarity > 75:
         difficulty = 3
         subject = x['Subject'].to_string()
+        # subject = "Operating System"
         interview_score += 9
         ask_question(data, difficulty, subject, driver)
-    elif 50 < similarity*100 <= 75:
+    elif 50 < similarity <= 75:
         difficulty = 2
         subject = subjects[random.randint(0, len(subjects)-1)]
+        # subject = "Operating System"
         interview_score += 6
         ask_question(data, difficulty, subject, driver)
-    elif 25 < similarity*100 <= 50:
+    elif 25 < similarity <= 50:
         difficulty = 1
         subject = x['Subject'].to_string()
+        # subject = "Operating System"
         interview_score += 4
         ask_question(data, difficulty, subject, driver)
     else:
         difficulty = 1
         subject = x['Subject'].to_string()
+        # subject = "Operating System"
         # skill_question(x, count, data)
         skill_question(data, difficulty, subject, driver)
 
@@ -178,7 +181,7 @@ def ask_first_question(data, c, driver):
     global count
     count = c
     x = data.sample()
-    print(x)
+    # print(x)
     first_question = x['Question'].to_string()
     first_answer = x['Actual Answer'].to_string()
     if first_question in asked:
@@ -188,17 +191,15 @@ def ask_first_question(data, c, driver):
     write_to_file(first_question)
     text_to_speech(first_question)  # ask question
     candidate_response = speech_to_text()
+    with open("speech_result.txt", "w") as result_file:
+        result_file.write(candidate_response)
     write_to_file(candidate_response)
     #speech is recorded and converted to text
-    #classify the speech using the audio_classifier()
-    audio_properties = audio_classifier() 
-    print(candidate_response)
+    print("hi" + str(count))
     similarity = context(first_answer, candidate_response)
     write_to_file(str(similarity))
-    #! call finish_file
     face_functions.append_face_to_file()
     next_question(similarity, x, data, driver)
-
     return interview_score
 
 
@@ -225,13 +226,12 @@ def ask_question(data, difficulty, subject, driver):
         candidate_response = speech_to_text()
         print(candidate_response)
         write_to_file(candidate_response)
-        audio_properties = audio_classifier()
+        # audio_properties = audio_classifier()
         similarity = context(actual_answer, candidate_response)
         write_to_file(str(similarity))
         print(similarity)
         face_functions.append_face_to_file()
         next_question(similarity, x, data, driver)
-
 
 def skill_question(df, difficulty, subject, driver):
     global interview_score, question_flag, count
@@ -302,12 +302,11 @@ def skill_question(df, difficulty, subject, driver):
             candidate_response = speech_to_text()
             print(candidate_response)
             write_to_file(candidate_response)
-            audio_properties = audio_classifier()
+            # audio_properties = audio_classifier()
             similarity = context(actual_answer, candidate_response)
             write_to_file(str(similarity))
             x = df.sample()
             next_question(similarity, x, df, driver)
-
     else:
         print(subject, "Website not found")
         ask_question(df, difficulty, subject, driver)
