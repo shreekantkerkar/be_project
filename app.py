@@ -19,7 +19,14 @@ from werkzeug.utils import secure_filename
 import helper
 from sentence_transformers import SentenceTransformer, util
 
+from flask import request
+import json
+import spacy
 
+from googlesearch import search
+from bs4 import BeautifulSoup
+import requests
+import nltk
 df = pd.read_csv("Question Dataset.csv")
 pd.set_option('display.max_colwidth', None)
 
@@ -34,9 +41,62 @@ model = load_model('ml_folder/video.h5')
 # model.load_weights('ml_folder/model.h5')
 # model._make_predict_function()
 
-
+skills_from_resume=[]
 report_skills = []
 final_skills = []
+
+nlp = spacy.load('model-best')
+
+def parse_resume(file):
+    text = helper.extract_text_from_pdf(file)
+    # print("text " ,text)
+    doc = nlp(text)
+    entities = [{'text': ent.text, 'label': ent.label_} for ent in doc.ents]
+    for ent in doc.ents:
+        if(ent.label_ == 'SKILLS'):
+            skills_from_resume.append(ent.text)
+    print(skills_from_resume)
+    return entities
+
+nltk.download('punkt')
+
+def scrape_questions_from_search(query, num_results=5, max_questions_per_site=2):
+    search_results = search(query, num_results=num_results)
+
+    questions = []
+
+    for url in search_results:
+        try:
+            # Send a GET request to the URL with a User-Agent header
+            headers = {
+                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
+            }
+            response = requests.get(url, headers=headers)
+
+            # Check if the request was successful (status code 200)
+            if response.status_code == 200:
+                # Parse the HTML content of the page
+                soup = BeautifulSoup(response.text, 'html.parser')
+
+                # Extract all text elements from the HTML document
+                all_text = soup.get_text(separator=' ')
+
+                # Tokenize the text into sentences and filter those starting with common question words and ending with a question mark
+                sentences = nltk.sent_tokenize(all_text)
+                
+                # Extract up to max_questions_per_site questions from each website
+                extracted_questions = [sentence.strip() for sentence in sentences if sentence.strip().lower().startswith(('what','state','in','define','explain', 'why', 'how', 'when', 'where', 'which', 'is', 'are', 'do', 'does', 'did')) and sentence.strip().endswith('?')][:max_questions_per_site]
+                
+                questions.extend(extracted_questions)
+
+                # If the total number of questions reaches the desired limit, break out of the loop
+                if len(questions) >= num_results:
+                    break
+
+        except Exception as e:
+            print(f"Error processing URL {url}: {e}")
+
+    return questions
 
 
 def context(Skills, final_exp):
@@ -65,6 +125,7 @@ def context_job(Skills, final_exp):
         if cosine_scores[0][0] > 0.45:
             final_skills.append(Skills)
             print(Skills, final_exp, cosine_scores[0][0])
+
 
 
 def start_file(job_description, filename):
@@ -216,6 +277,34 @@ def start_file(job_description, filename):
 def index():
     return render_template('index.html')
 
+@app.route('/parse_resume', methods=['POST'])
+def parse_resume_route():
+    f1 = request.files['resume']
+    f1.save(f1.filename)
+    # print("file is there",f1.filename)
+    result = parse_resume(f1.filename)
+    all_questions = []
+
+    for skill in skills_from_resume:
+        query = f"{skill} interview questions"
+        questions = scrape_questions_from_search(query, num_results=2)
+        all_questions.extend(questions)
+    return render_template('result.html', entities=result,questions=all_questions)
+
+
+# @app.route('/scrape_questions', methods=['POST'])
+# def scrape_questions():
+
+#     skills = request.form['skills'].split(',')
+#     all_questions = []
+
+#     for skill in skills:
+#         query = f"{skill} interview questions"
+#         questions = scrape_questions_from_search(query, num_results=10)
+#         all_questions.extend(questions)
+
+#     return render_template('web_scrap.html', questions=all_questions)
+
 
 @app.route('/uploade', methods=['POST', 'GET'])
 def upload_file():
@@ -311,7 +400,7 @@ def success():
         f2.save(f2.filename)
         print(f1.filename)
         start_file(f1.filename, f2.filename)
-        return render_template("success.html", name=f2.filename)
+        return render_template("success_resume.html", name=f2.filename)
 
 @app.route('/changetabs', methods=['POST','GET'])
 def changetabs():
