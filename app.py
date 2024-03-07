@@ -27,7 +27,44 @@ from googlesearch import search
 from bs4 import BeautifulSoup
 import requests
 import nltk
-df = pd.read_csv("Question Dataset.csv")
+  
+#GEMINI code
+import re
+import os
+import google.generativeai as genai
+from dotenv import load_dotenv
+# Load environment variables from .env
+load_dotenv()
+
+safety_settings = [
+    {
+        "category": "HARM_CATEGORY_DANGEROUS",
+        "threshold": "BLOCK_NONE",
+    },
+    {
+        "category": "HARM_CATEGORY_HARASSMENT",
+        "threshold": "BLOCK_NONE",
+    },
+    {
+        "category": "HARM_CATEGORY_HATE_SPEECH",
+        "threshold": "BLOCK_NONE",
+    },
+    {
+        "category": "HARM_CATEGORY_SEXUALLY_EXPLICIT",
+        "threshold": "BLOCK_NONE",
+    },
+    {
+        "category": "HARM_CATEGORY_DANGEROUS_CONTENT",
+        "threshold": "BLOCK_NONE",
+    },
+]
+GOOGLE_API_KEY = os.getenv('GEMINI_API_KEY')  # Replace with your actual API key
+genai.configure(api_key=GOOGLE_API_KEY)
+gem_model = genai.GenerativeModel('gemini-pro',safety_settings=safety_settings)
+
+
+# df = pd.read_csv("Question Dataset.csv")
+df = pd.read_csv("questions_csv.csv")
 pd.set_option('display.max_colwidth', None)
 
 app = Flask(__name__)
@@ -41,7 +78,8 @@ model = load_model('ml_folder/video.h5')
 # model.load_weights('ml_folder/model.h5')
 # model._make_predict_function()
 
-skills_from_resume=[]
+skills_from_resume=['object oriented programming','stacks','database management','sql','computer networks','operating systems','queues',
+                    'trees','arrays','programming systems']
 report_skills = []
 final_skills = []
 
@@ -271,8 +309,33 @@ def start_file(job_description, filename):
         report_file.write("\n")
         report_file.write("\n")
 
+def extract_questions(text):
+    
+  # Improved regular expression for better question capture
+  question_pattern = r"\d+\. (.*?)(?:\n|\Z)"  # Matches questions starting with a number and ending with newline or end of text
 
+  all_questions = []
+  sections = text.split("\n\n")  # Split by empty lines to separate sections
 
+  for section in sections:
+    if section.strip():  # Check if section is not empty
+      topic = section.split(":")[0].strip()  # Extract topic (assuming format "Topic:")
+      matches = re.findall(question_pattern, section)
+      for match in matches:
+        question = match.strip()
+        all_questions.append(question)  # Store topic and question together
+
+  return all_questions
+
+def generate_questions(query):
+    try:
+        # Configure the model with your API key (replace with your actual key)
+        response = gem_model.generate_content(query)
+        return response.text
+    except Exception as e:
+        print(f"Error generating questions: {e}")
+        return "Failed to generate questions."
+    
 @app.route('/')
 def index():
     return render_template('index.html')
@@ -285,11 +348,55 @@ def parse_resume_route():
     result = parse_resume(f1.filename)
     all_questions = []
 
-    for skill in skills_from_resume:
-        query = f"{skill} interview questions"
-        questions = scrape_questions_from_search(query, num_results=2)
-        all_questions.extend(questions)
-    return render_template('result.html', entities=result,questions=all_questions)
+    
+    
+    skills_string = ', '.join(skills_from_resume)
+    query = skills_string + " generate top 10 interview questions from each skills mentioned. return a list containing all the extracted interview questions, without mentioning the skill name it belong to as the title."
+    print(query)
+    # res = gem_model.generate_content(query)
+    # text = res.text
+    res = generate_questions(query)
+    if(res=="Failed to generate questions."):
+        for skill in skills_from_resume:
+            query_for_web_scrapping = f"{skill} top interview questions"
+            questions = scrape_questions_from_search(query_for_web_scrapping, num_results=2)
+            all_questions.extend(questions)
+    else:
+        all_questions = extract_questions(res)
+    
+    # Create a DataFrame from the list of questions
+    df = pd.DataFrame({'Question': all_questions})
+
+    # Save the DataFrame to a CSV file
+    csv_file_path = 'questions_csv.csv'
+    df.to_csv(csv_file_path, index_label='Question Number', mode='w')
+        
+    return render_template('resume_parser.html', entities=result,questions=all_questions)
+
+
+
+# @app.route('/gemini')
+# def indexx():
+#     return render_template('gemini.html')
+
+# @app.route('/generate_question', methods=['POST'])
+# def generate_question():
+#     if request.method == 'POST':
+#         user_answer = request.form['user_answer']
+
+#         # Your gemini code
+#         response = gem_model.generate_content(user_answer)
+
+#         # Convert Markdown response to HTML
+#         html_response = response.text
+        
+#         # print(response.text)
+#         return render_template('geminiresult.html', response=html_response)
+
+
+
+
+
 
 
 # @app.route('/scrape_questions', methods=['POST'])
@@ -326,7 +433,7 @@ def finish():
     print("In finish")
     # return redirect(url_for('result'))
 
-    return render_template("success.html", interview_score = utility_functions.interview_score, questions=utility_functions.asked)
+    return render_template("success.html", interview_score = utility_functions.interview_score, candidate_data=utility_functions.candidate_data)
     # return send_from_directory('templates', 'success.html')
 
 
@@ -371,7 +478,7 @@ def start():
         interview_score = utility_functions.ask_first_question(df, count, driver)
         # print(interview_score)
         
-        return render_template("success.html", interview_score=interview_score, questions=utility_functions.asked)
+        return render_template("success.html", interview_score=interview_score, candidate_data=utility_functions.candidate_data)
     except Exception as e:
         print(e)
         return 'Internal Server Error', 500

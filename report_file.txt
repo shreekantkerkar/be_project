@@ -685,3 +685,330 @@ confidence: 0%	 nervousness: 0%	 neutral: 0%
 
 Number of change Tabs =1
 
+0    What is an operating system?
+Number of change Tabs =0
+
+3    What are the different states of the process?
+Number of change Tabs =0
+
+Achcha
+-4
+confidence: 45.83%	 nervousness: 26.67%	 neutral: 55.0%
+
+5    Briefly explain FCFS?
+Number of change Tabs =0
+
+18    Explain the process behind storing a variable in memory.
+Number of change Tabs =1
+
+15    What is the Direct Access Method?
+Number of change Tabs =0
+
+4    What is a deadlock?  
+a deadlock is a situation where two processes are waiting for each other to a leave the resources and the other one is holding the resources
+28
+confidence: 0%	 nervousness: 0%	 neutral: 0%
+
+Number of change Tabs =2
+
+8    Mention the different languages present in DBMS
+TCL TVS Apache
+23
+confidence: 50.0%	 nervousness: 4.26%	 neutral: 91.49%
+
+0    What is an operating system?
+Number of change Tabs =2
+
+11    Do we consider NULL values the same as that of blank space or zero? 
+Number of change Tabs =0
+
+we do not consider null values same as that of the blank space or zero null value basically means nothing so yeah
+80
+confidence: 47.37%	 nervousness: 5.26%	 neutral: 94.74%
+
+6    Explain RDBMS with examples.
+RDBMS stands for a relational database management system which basically is designed to manage the tables and some examples are SQL Oracle etc
+82
+confidence: 50.0%	 nervousness: 0.0%	 neutral: 100.0%
+
+2    What are the four necessary and sufficient conditions behind the deadlock?
+Number of change Tabs =0
+
+so there are basically four necessary and sufficient conditions behind the deadlock which is the first one is no gold and wheat there must not be then there must not be mutual exclusion then blah blah blah blah blah blah blah kyu nahi hua yaar
+16    What is normalization and what are the different types of normalization?
+a normalisation is a process where we try to reduce the redundancy in the Tables by basically reducing the total number of inter independent table so it helps us in saving the storage and types of normalisation are there are four types First Normal Form second Normal Form third normal form and bcnf
+55
+confidence: 50.0%	 nervousness: 0.0%	 neutral: 100.0%
+
+1    What is the difference between micro kernel and macro kernel?
+Number of change Tabs =0
+
+show micro kernel is small in size and macro colour is a little larger size
+6    Explain RDBMS with examples.
+Number of change Tabs =0
+
+8    Mention the different languages present in DBMS
+so there are different a database management system languages in DBMS like SQL Oracle and blah blah blah blah blah blah blah blah blah yaar kaun hai
+44
+confidence: 48.8%	 nervousness: 2.41%	 neutral: 97.59%
+
+0    What is an operating system?
+Number of change Tabs =0
+
+so operating system basically is something which manages the hardware and software part of a computer it make sure that everything gets the resources at whatever time we need and everything
+2    What are the four necessary and sufficient conditions behind the deadlock?
+Number of change Tabs =0
+
+so there are basically four conditions which are necessary for the deadlock to happen in the first one then must not be any mutual exclusion in the second one would be should be the hold in which situation in the third one will be I don't know in the fourth one also I don't know thank you
+60
+confidence: 50.0%	 nervousness: 0.0%	 neutral: 100.0%
+
+14    What are the ACID properties in DBMS?
+acid property in DBMS stands for atomicity consistency durability and I don't know for I so these are basically some of the properties which DBMS must follow in order to keep the data save and in order to keep the data valid
+59
+confidence: 41.25%	 nervousness: 20.0%	 neutral: 77.5%
+
+18    Explain the process behind storing a variable in memory.
+Number of change Tabs =0
+
+15    What is the Direct Access Method?
+so Direct Access method is basically a method will be directly access the information without any approved
+60
+confidence: 51.75%	 nervousness: 0.0%	 neutral: 96.49%
+
+17    Write about monolithic kernel?
+Number of change Tabs =2
+
+10    What is fragmentation?
+Ek fragmentation anything else mummy
+29
+confidence: 55.33%	 nervousness: 9.33%	 neutral: 70.67%
+
+11    Do we consider NULL values the same as that of blank space or zero? 
+Number of change Tabs =0
+
+7    What is Banker’s algorithm?
+1    What is the difference between micro kernel and macro kernel?
+Number of change Tabs =0
+
+micro kernel is micro in nature and macroeconomics is large in nature
+68
+confidence: 50.0%	 nervousness: 8.7%	 neutral: 82.61%
+
+13    What is the basic function of paging?
+Number of change Tabs =1
+
+so paging is basically a process which is there in the software which is a basically functions to a manage the process which should get the resources and which should not get the resources
+70
+confidence: 47.45%	 nervousness: 6.37%	 neutral: 92.36%
+
+2    What are the four necessary and sufficient conditions behind the deadlock?
+show the four necessary and sufficient conditions for behind the deadlocks are the first one being there must not be any mutual exclusion then the second one is the hold in weight the third one is there must not be any circular dependency and The Fourth only I don't know
+61
+confidence: 48.57%	 nervousness: 2.86%	 neutral: 97.14%
+
+17    Write about monolithic kernel?
+Number of change Tabs =0
+
+3    What are the different states of the process?
+there are seven different states of a process the first one be in start ready then wait suspend blah blah blah blah I don't know remember blah blah blah blah blah blah blah blah blah blah blah blah blah my name is Neha hello hello
+40
+confidence: 49.36%	 nervousness: 11.54%	 neutral: 78.21%
+
+0    What is an operating system?
+Number of change Tabs =0
+
+14    What are the ACID properties in DBMS?
+CBSE property in DBMS stands for atomicity consistency isolation and durability so these are the properties that we must maintain in order to make the data consistent and in order to keep the data valid so as the changes which have been made does not reflect the other transaction which is being performed on the other side
+40
+confidence: 50.0%	 nervousness: 0.0%	 neutral: 100.0%
+
+3    What are the different states of the process?
+Saudi Arab 2007 different states of a process including ready state and suspended state then the great state the finished state the state where the process is basically a waiting for someone other process to
+Number of change Tabs =2
+
+4    What is a deadlock?  
+so deadlock is basically a situation in which occurs in OS Where are two processes are not going to proceed because some one process is waiting for the other process to leave the resources and the other process is holding the resources so in this way there is a blockage between the processes so they can't proceed to execute their functionality
+85
+confidence: 42.38%	 nervousness: 15.24%	 neutral: 84.76%
+
+0    What is an operating system?
+so an operating system is basically a system which basically manages the computer hardware and the system resources and it also provides common services for computer programs so basically after been initially loaded into the computer by a boot program it manages all of the other application from programs in a computer and it makes
+73
+confidence: 17.53%	 nervousness: 64.94%	 neutral: 35.06%
+
+6    Explain RDBMS with examples.
+one second
+-4
+confidence: 30.56%	 nervousness: 38.89%	 neutral: 61.11%
+
+2    What are the four necessary and sufficient conditions behind the deadlock?
+9    What are overlays?
+38    What is Section 80C ?
+section 80c is
+28
+confidence: 40.0%	 nervousness: 21.82%	 neutral: 76.36%
+
+1    Why OOPs?
+13    How should I practice binary tree coding questions after preparing these theoretical interview questions?
+Number of change Tabs =0
+
+22    What is the difference between C, C++ and Java?
+show the main difference between C and C + + is that in C plus plus we do have object oriented programming in C we do not have object oriented programming and in Java we have a object oriented programming but it is partial object oriented other than that RC is about
+56
+confidence: 48.12%	 nervousness: 3.76%	 neutral: 96.24%
+
+Number of change Tabs =3
+
+20    Explain the key features of Github and its role in software development.
+database basically a version control which are helps in managing all the files across its platform it helps a various collaborators to work on the same project it basically provides a platform where the project workers can collaborate and work on the same project they can merge their code they can commit their code they can also push their code
+45
+4    What is the difference between a TCP connection and a UDP connection?
+TCP connection basically stands for Transport layer transport control protocol and udp stands for user datagram protocol so the major differences between them is that a TCP is a connection oriented protocol connection where is udp is a
+71
+confidence: 33.96%	 nervousness: 32.08%	 neutral: 67.92%
+
+18    Describe the features and usage of Bootstrap in web development.
+ok so bootstrap is basically a Framework which in development which basically helps in modularizing and customisable architecture so it basically allows the developer to import necessary components which have already some CSS and HTML part ready so we do not have to worry about the designing part and we can directly imp
+65
+confidence: 37.69%	 nervousness: 24.63%	 neutral: 75.37%
+
+Based on your answer, it seems that you have a good understanding of the modular and customizable aspects of Bootstrap. However, Bootstrap also includes a range of pre-built components. Can you provide some examples of these components and how they can enhance web development?
+imported into our website so this basically helps us to customise their code like they have the readymade CSS standards which we can change according to our aspect if you want to change the number or any other component and modularizing is basically it basically the code of each and every component is different so it helps us to
+47
+confidence: 46.58%	 nervousness: 6.83%	 neutral: 93.17%
+
+Number of change Tabs =5
+
+19    Use Postman to test an API.
+ok so postman is basically a platform which allows a developer to tested API they can a basically a randy select the test lab then run the automated test as a collection then The Postman collection dinner can be used to test the entire a test collection
+63
+confidence: 42.39%	 nervousness: 15.22%	 neutral: 84.78%
+
+Next question:
+
+"In the context of testing an API using Postman, can you explain the significance of 'test collections' and how they contribute to efficient and thorough API testing?"
+flow for a test to enables you to run the collection in the following ways it enables you to use different methods like to delete Input and organised them into sub folders
+48
+confidence: 41.22%	 nervousness: 17.56%	 neutral: 82.44%
+
+1    Explain the concept of a stack data structure and provide an example of its implementation.
+stack data structure is basically data structure which follows first in first out sorry last in first out so it is basically the element which was inserted last week will remove will be the one which will be removed first and it basically is a linear data structure and
+-1
+confidence: 38.67%	 nervousness: 22.67%	 neutral: 77.33%
+
+1    Explain the concept of a stack data structure and provide an example of its implementation.
+can basically go last and faster so that can be implemented using adding outline
+24
+confidence: 46.63%	 nervousness: 6.74%	 neutral: 93.26%
+
+1    Explain the concept of a stack data structure and provide an example of its implementation.
+Number of change Tabs =6
+
+18    Explain the purpose of Postman and how it is used for testing and managing APIs.
+so postman is basically used for testing the API which stands for application programming interface it helps us to build test design and modify and document the API and we can also make the collections for a grouping the APS which belongs to the same project we can
+81
+confidence: 39.31%	 nervousness: 22.01%	 neutral: 77.36%
+
+Based on the candidate's response, a follow-up question could be:
+
+"You mentioned that Postman can be used for testing and managing APIs. Can you elaborate on the specific types of API tests that can be performed using Postman? How does Postman facilitate these tests and what features does it offer for managing API testing workflows?"
+types of request get post coat patch and many more
+23
+confidence: 31.36%	 nervousness: 37.29%	 neutral: 62.71%
+
+11    Write a JSP page to display data from a database.
+show JSP stands from for Java servlet pages so it basically it is a kind of JavaScript which helps in manipulation but it is more advanced form of database
+53
+confidence: 27.84%	 nervousness: 53.61%	 neutral: 37.11%
+
+Failed to generate question.
+19    Describe the different types of cloud computing services and how they are used.
+so there are different types of cloud computing services like private public hybrid so basically in public cloud service the access is there publicly in private organisation owns the ones the decision to which resources can be accessed and what type of resources to be located it is a
+60
+confidence: 49.64%	 nervousness: 1.43%	 neutral: 97.86%
+
+Can you provide specific examples of how public, private, and hybrid cloud services are being used in real-world scenarios by different organizations?
+private can be used when the organisation wants to keep their own cloud to themselves and hybrid more than one organisation wants to share their data so they can use the hybrid cloud services
+62
+confidence: 50.33%	 nervousness: 0.0%	 neutral: 99.35%
+
+"Based on your understanding of cloud service models, can you elaborate on the advantages and disadvantages of using a private cloud versus a hybrid cloud? Explain how these considerations can influence an organization's decision in choosing the most suitable option."
+advantage that the data is written within ourselves only in the disadvantage is that of the organisation needs to control everything in the private houses in hybrid the control is over more than one organisation so they can divide the work accordingly in the advantage of hybrid cloud is that we don't need to buy separate a cloud resources for different organisation it is share
+71
+confidence: 50.32%	 nervousness: 0.0%	 neutral: 99.37%
+
+9    Explain the benefits of using a framework like Springboot for web development.
+we also don't need XML configuration and can impact JT and under two directly and it is it provides a benefit of making a zoom loosely coupled application so it is quite beneficial when it comes to web development
+43
+confidence: 50.0%	 nervousness: 1.34%	 neutral: 97.32%
+
+17    Describe your experience with using React Js and Nodejs in a web development project.
+which basically provides a lots of diabetes which we can integrate to implement such functionality for example requires jwt authentication which helps in basically authenticating the user using a token so they both provide a very good
+31
+confidence: 50.48%	 nervousness: 0.0%	 neutral: 99.04%
+
+Number of change Tabs =9
+
+4    What are the key components and protocols involved in a computer network?
+I am so in computer networks are two main protocols are included which is TCP and udp TCP stands for transmission control protocol and udp stands for user datagram protocol TCP is basically we have to establish a connection while transmitting and also in the transmission when ending it but in udp we do not need to do any connection
+49
+confidence: 35.71%	 nervousness: 30.08%	 neutral: 68.42%
+
+1    What are the advantages and disadvantages of using a stack data structure?
+Number of change Tabs =6
+
+the advantages that it feels space
+20
+confidence: 43.48%	 nervousness: 13.04%	 neutral: 86.96%
+
+3    Write a SQL query to retrieve data from a table based on multiple conditions.
+Number of change Tabs =0
+
+so if we want to retrieve data
+25
+confidence: 44.35%	 nervousness: 12.9%	 neutral: 85.48%
+
+5    Describe the different types of operating systems and their key features.
+Number of change Tabs =2
+
+4    Describe the different types of computer networks and their respective advantages and disadvantages.
+there are different types of computer networks like computer networks one computer networks to and computer networks 3 and some of the examples are Local area network personal area network wireless Local area network and campus area network
+61
+confidence: 45.54%	 nervousness: 14.29%	 neutral: 80.36%
+
+Based on your answer, can you elaborate on the advantages and disadvantages of Local Area Networks (LANs)?
+it provides easy to set up then the cost is a minimal then also the disadvantage is that we need to we need to do the communication and also we need to set up everything one of the advantage is that it is simple and inexpensive then it is accessible software then Rapid communication
+58
+confidence: 41.18%	 nervousness: 21.18%	 neutral: 75.29%
+
+Based on your explanation of the advantages of LANs, can you elaborate on the specific cost benefits and ease of setup that make them a desirable choice for businesses? Additionally, can you provide more detail on the potential disadvantages and limitations of using LANs, such as the need for physical connections and the scalability challenges when expanding the network?
+low price if an organisation wishes to construct it at a low price with flexibility then it is an ideal choice
+31
+confidence: 43.1%	 nervousness: 15.52%	 neutral: 82.76%
+
+9    Discuss the features and benefits of Springboot as a Java-based web application framework.
+Number of change Tabs =5
+
+then it helps us to organise the code and also it is a Advanced Java so it provides much more features like JSON then internationalisation and also MVC structure
+36
+confidence: 36.03%	 nervousness: 33.82%	 neutral: 60.29%
+
+14    Use CSS to style a webpage with custom fonts and colors.
+we can use CSS to a basically write custom fonts and Colours for colours we need to give colour as the attribute and we can mention any name of the colour which we want to give in for custom font we need to import it from any website and then we can directly apply the phone on any HTML field like a tag or paragraph or may be H1
+46
+confidence: 52.55%	 nervousness: 3.18%	 neutral: 88.54%
+
+10    Explain the lifecycle of a JSP page.
+the life cycle of JSP chase is defined as the process which basically starts with its creation when which later translated to a servlet and after Chevrolet beans in happiness translation of JSP page to servlet and compilation of the JSP page then class loading initialisation and GSP cleanup
+64
+confidence: 43.33%	 nervousness: 17.04%	 neutral: 79.26%
+
+Based on your explanation of the JSP page lifecycle, could you please elaborate on the difference between the translation and compilation phases of the lifecycle? Explain how these phases contribute to the overall performance and efficiency of a JSP page.
+the syntactic correctness of the JSP so where the test JSP file is created to test to which is translated to tested Java and in the compilation The generated Java servlet page which is based on Java is compiled to a class file which is tested class
+68
+confidence: 44.44%	 nervousness: 15.87%	 neutral: 79.37%
+
+Based on your description of the translation and compilation phases of the JSP page lifecycle, how do these phases impact the ability of JSP pages to dynamically adapt to different user requests and data? Can you provide an example to demonstrate this adaptability and how it enhances the user experience?
+Number of change Tabs =6
+

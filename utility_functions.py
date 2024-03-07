@@ -25,12 +25,52 @@ from pygame import mixer
 from speech_classifier import audio_classifier
 import face_functions
 import pyttsx3
+import csv
+#GEMINI code
+import google.generativeai as genai
+from dotenv import load_dotenv
+# Load environment variables from .env
+load_dotenv()
+
+safety_settings = [
+    {
+        "category": "HARM_CATEGORY_DANGEROUS",
+        "threshold": "BLOCK_NONE",
+    },
+    {
+        "category": "HARM_CATEGORY_HARASSMENT",
+        "threshold": "BLOCK_NONE",
+    },
+    {
+        "category": "HARM_CATEGORY_HATE_SPEECH",
+        "threshold": "BLOCK_NONE",
+    },
+    {
+        "category": "HARM_CATEGORY_SEXUALLY_EXPLICIT",
+        "threshold": "BLOCK_NONE",
+    },
+    {
+        "category": "HARM_CATEGORY_DANGEROUS_CONTENT",
+        "threshold": "BLOCK_NONE",
+    },
+]
+GOOGLE_API_KEY = os.getenv('GEMINI_API_KEY')  # Replace with your actual API key
+genai.configure(api_key=GOOGLE_API_KEY)
+gem_model = genai.GenerativeModel('gemini-pro',safety_settings=safety_settings)
 
 count = 0
 interview_score = 0
 asked = []
-
+candidate_answers = []
+similartiy_score = []
 flag = False
+candidate_data = {
+    'questions_asked': [],
+    'candidate_answers': [],
+    'similarity_score': []
+}
+
+curr_ques_count = 0
 # global question_flag 
 question_flag = True
 # analyticsDict = {
@@ -140,70 +180,79 @@ def context(string1, string2):
     return similarity
 
 
+def generate_question(question,answer):
+    try:
+        # Configure the model with your API key (replace with your actual key)
+        text = "A candidate answered for the question : " + question + " and the answer candidate gave was " + answer + " Now I want to ask next question to him based on his answer as i want to mimic real life interview. please generate a question "
+        response = gem_model.generate_content(text)
+        return response.text
+    except Exception as e:
+        print(f"Error generating question: {e}")
+        return "Failed to generate question."
 
+def generate_answer(query):
+    try:
+        # Configure the model with your API key (replace with your actual key)
+        response = gem_model.generate_content(query)
+        return response.text
+    except Exception as e:
+        print(f"Error generating answer: {e}")
+        return "Failed to generate answer."
+    
+    
 def start_driver():
     return webdriver.Chrome(service=Service(ChromeDriverManager().install()))
 
 
-def next_question(similarity, x, data, driver):
-    global count
-    count += 1
-    global interview_score
-    subjects = list(data['Subject'].unique())
+# def next_question(similarity, x, data, driver):
+#     global count
+#     count += 1
+#     global interview_score
+#     subjects = list(data['Subject'].unique())
 
-    if similarity > 75:
-        difficulty = 3
-        subject = x['Subject'].to_string()
-        # subject = "Operating System"
-        interview_score += 9
-        ask_question(data, difficulty, subject, driver)
-    elif 50 < similarity <= 75:
-        difficulty = 2
-        subject = subjects[random.randint(0, len(subjects)-1)]
-        # subject = "Operating System"
-        interview_score += 6
-        ask_question(data, difficulty, subject, driver)
-    elif 25 < similarity <= 50:
-        difficulty = 1
-        subject = x['Subject'].to_string()
-        # subject = "Operating System"
-        interview_score += 4
-        ask_question(data, difficulty, subject, driver)
-    else:
-        difficulty = 1
-        subject = x['Subject'].to_string()
-        # subject = "Operating System"
-        # skill_question(x, count, data)
-        skill_question(data, difficulty, subject, driver)
+#     if similarity > 75:
+#         difficulty = 3
+#         subject = x['Subject'].to_string()
+#         # subject = "Operating System"
+#         interview_score += 9
+#         ask_question(data, difficulty, subject, driver)
+#     elif 50 < similarity <= 75:
+#         difficulty = 2
+#         subject = subjects[random.randint(0, len(subjects)-1)]
+#         # subject = "Operating System"
+#         interview_score += 6
+#         ask_question(data, difficulty, subject, driver)
+#     elif 25 < similarity <= 50:
+#         difficulty = 1
+#         subject = x['Subject'].to_string()
+#         # subject = "Operating System"
+#         interview_score += 4
+#         ask_question(data, difficulty, subject, driver)
+#     else:
+#         difficulty = 1
+#         subject = x['Subject'].to_string()
+#         print("in skill question")
+#         # subject = "Operating System"
+#         # skill_question(x, count, data)
+#         skill_question(data, difficulty, subject, driver)
+def count_records(csv_file_path):
+    try:
+        with open(csv_file_path, 'r') as file:
+            # Create a CSV reader
+            csv_reader = csv.reader(file)
+            
+            # Use len() to get the total number of rows
+            total_records = len(list(csv_reader))
+            
+            return total_records
+    except FileNotFoundError:
+        print(f"File not found: {csv_file_path}")
+        return 0
+    except Exception as e:
+        print(f"An error occurred: {e}")
+        return 0
 
-
-def ask_first_question(data, c, driver):
-    global count
-    count = c
-    x = data.sample()
-    # print(x)
-    first_question = x['Question'].to_string()
-    first_answer = x['Actual Answer'].to_string()
-    if first_question in asked:
-        ask_first_question(data, driver)
-    print(first_question)
-    asked.append(first_question)
-    write_to_file(first_question)
-    text_to_speech(first_question)  # ask question
-    candidate_response = speech_to_text()
-    with open("speech_result.txt", "w") as result_file:
-        result_file.write(candidate_response)
-    write_to_file(candidate_response)
-    #speech is recorded and converted to text
-    print("hi" + str(count))
-    similarity = context(first_answer, candidate_response)
-    write_to_file(str(similarity))
-    face_functions.append_face_to_file()
-    next_question(similarity, x, data, driver)
-    return interview_score
-
-
-def ask_question(data, difficulty, subject, driver):
+def next_question_ask(data,next_question_to_ask,driver):
     global interview_score, question_flag
     if question_flag == False:
         return interview_score
@@ -211,105 +260,258 @@ def ask_question(data, difficulty, subject, driver):
     if count>5:
         return interview_score
     else:
-        temp_data = data[(data['Difficulty'] == difficulty)]
-        x = temp_data.sample()
-        question = x['Question'].to_string()
-        if question in asked:
-            ask_question(data, difficulty, subject, driver)
-        print(question)
+        # temp_data = data[(data['Difficulty'] == difficulty)]
+        # x = temp_data.sample()
+        # question = x['Question'].to_string()
+        x = data.sample()
+        question = next_question_to_ask
         asked.append(question)
         write_to_file(question)
         text_to_speech(question)  # ask question
-
-        actual_answer = x['Actual Answer'].to_string()
-
+        
+        actual_answer = generate_answer(question)
         candidate_response = speech_to_text()
         print(candidate_response)
         write_to_file(candidate_response)
+        candidate_answers.append(candidate_response)
         # audio_properties = audio_classifier()
         similarity = context(actual_answer, candidate_response)
         write_to_file(str(similarity))
+        similartiy_score.append(similarity)
         print(similarity)
+        candidate_data['questions_asked'].append(question)
+        candidate_data['candidate_answers'].append(candidate_response)
+        candidate_data['similarity_score'].append(similarity)
         face_functions.append_face_to_file()
         next_question(similarity, x, data, driver)
 
-def skill_question(df, difficulty, subject, driver):
-    global interview_score, question_flag, count
 
-    if question_flag == False:
-        return interview_score
-    if count > 5:
-        return interview_score
-    file = open('report_file.txt', 'r', encoding='utf-8', errors='ignore')
-    data = file.readlines()
-    text = []
-    for line in data:
-        word = line.split()
-        text.append(word)
+def next_question(similarity, x, data, driver):
+    global count
+    global curr_ques_count
+    count += 1
+    global interview_score
+    # subjects = list(data['Subject'].unique())
 
-    index = 0
-    for i in range(len(text)):
-        if len(text[i]) > 0:
-            if text[i][0] == 'Skills:':
-                index = i
-                break
-
-    skills = text[index + 1]
-    # print(skills)
-    final_questions = []
-    final_answers = []
-    subject = skills[random.randint(0, len(skills)-1)]
-    print(subject)
-    # subject = 'Python'
-    url = f"https://www.interviewbit.com/{subject}-interview-questions/"
-    val = url
-    print(url)
-    response = requests.get(url)
-    if response.status_code == 200:
-        wait = WebDriverWait(driver, 10)
-        driver.get(val)
-        get_url = driver.current_url
-        wait.until(EC.url_to_be(val))
-        page_source = driver.page_source
-        soup = BeautifulSoup(page_source, features="html.parser")
-
-        articles = soup.find_all('h3')
-        questions = []
-        for article in articles:
-            questions.append(article.get_text())
-        final_questions = []
-        for i in questions:
-            if 48 <= ord(i[0]) <= 57:
-                final_questions.append(i)
-
-        answers = soup.find_all('article', attrs={'class': 'ibpage-article'})
-        final_answers = []
-        for answer in answers:
-            final_answers.append(answer.get_text())
-        for i in range(len(final_answers)):
-            final_answers[i] = final_answers[i].replace("\n", " ")
-        print(final_questions)
-        index = random.randint(0, len(final_questions))
-        question = final_questions[index]
-        if question not in asked:
-            print(subject, " - ", question)
-            asked.append(question)
-            write_to_file(question)
-            text_to_speech(question)
-            actual_answer = final_answers[index]
-            print(actual_answer)
-            # get anscandidate_response
-            candidate_response = speech_to_text()
-            print(candidate_response)
-            write_to_file(candidate_response)
-            # audio_properties = audio_classifier()
-            similarity = context(actual_answer, candidate_response)
-            write_to_file(str(similarity))
-            x = df.sample()
-            next_question(similarity, x, df, driver)
+    if similarity > 50 and curr_ques_count<2:
+        print("in if part")
+        curr_ques_count += 1
+        interview_score += 10
+        previous_question = asked[len(asked)-1]
+        print("print(previous_question)")
+        print(previous_question)
+        previous_answer = candidate_answers[len(candidate_answers)-1]
+        print("print(previous_answer)")
+        print(previous_answer)
+        next_question_on_prev_res = generate_question(previous_question,previous_answer)
+        print("next_question_on_prev_res")
+        if next_question_on_prev_res == "Failed to generate question.":
+            print("Failed to generate question. Generating a random question.")
+            random_question_number = random.randint(1, total_questions)
+            temp_data = data[(data['Question Number'] == random_question_number)]
+            x = temp_data.sample()
+            next_question_on_prev_res = x['Question'].to_string()
+        print(next_question_on_prev_res)
+        next_question_ask(data,next_question_on_prev_res,driver)
     else:
-        print(subject, "Website not found")
-        ask_question(df, difficulty, subject, driver)
+        print("in else part")
+        curr_ques_count = 0
+        interview_score += 5
+        csv_file_path = 'questions_csv.csv'
+        total_questions = count_records(csv_file_path)
+        print("len(x)")
+        print(total_questions)
+        random_question_number = random.randint(1, total_questions)
+        temp_data = data[(data['Question Number'] == random_question_number)]
+        x = temp_data.sample()
+        question = x['Question'].to_string()
+        print("question else part")
+        print(question)
+        next_question_ask(data,question,driver)
+
+
+def ask_first_question(data, c, driver):
+    global count
+    count = c
+    x = data.sample()
+    
+    # csv_file_path = 'questions_csv.csv'
+    # total_questions = count_records(csv_file_path)
+    # print("len(x)")
+    # print(total_questions)
+    # print(x)
+    first_question = x['Question'].to_string()
+    print("first_question")
+    print(first_question)
+    answer = gem_model.generate_content(first_question)
+    first_answer = answer.text
+    print("first_answer")
+    print(first_answer)
+    # first_answer = x['Actual Answer'].to_string()
+    if first_question in asked:
+        ask_first_question(data, driver)
+    print(first_question)
+    asked.append(first_question)
+    write_to_file(first_question)
+    text_to_speech(first_question)  # ask question
+    candidate_response = speech_to_text()
+    
+    with open("speech_result.txt", "w") as result_file:
+        result_file.write(candidate_response)
+    write_to_file(candidate_response)
+    candidate_answers.append(candidate_response)
+    print("print(candidate_response)")
+    print(candidate_response)
+    #speech is recorded and converted to text
+    # print("hi" + str(count))
+    similarity = context(first_answer, candidate_response)
+    write_to_file(str(similarity))
+    similartiy_score.append(similarity)
+    print("similarity")
+    print(similarity)
+    candidate_data['questions_asked'].append(first_question)
+    candidate_data['candidate_answers'].append(candidate_response)
+    candidate_data['similarity_score'].append(similarity)
+    face_functions.append_face_to_file()
+    next_question(similarity, x, data, driver)
+    return interview_score
+
+# def ask_first_question(data, c, driver):
+#     global count
+#     count = c
+#     x = data.sample()
+#     # print(x)
+#     first_question = x['Question'].to_string()
+   
+#     first_answer = x['Actual Answer'].to_string()
+#     if first_question in asked:
+#         ask_first_question(data, driver)
+#     print(first_question)
+#     asked.append(first_question)
+#     write_to_file(first_question)
+#     text_to_speech(first_question)  # ask question
+#     candidate_response = speech_to_text()
+    
+#     with open("speech_result.txt", "w") as result_file:
+#         result_file.write(candidate_response)
+#     write_to_file(candidate_response)
+#     #speech is recorded and converted to text
+#     print("hi" + str(count))
+#     similarity = context(first_answer, candidate_response)
+#     write_to_file(str(similarity))
+#     face_functions.append_face_to_file()
+#     next_question(similarity, x, data, driver)
+#     return interview_score
+
+# def ask_question(data, difficulty, subject, driver):
+#     global interview_score, question_flag
+#     if question_flag == False:
+#         return interview_score
+#     print(count)
+#     if count>5:
+#         return interview_score
+#     else:
+#         temp_data = data[(data['Difficulty'] == difficulty)]
+#         x = temp_data.sample()
+#         question = x['Question'].to_string()
+#         if question in asked:
+#             ask_question(data, difficulty, subject, driver)
+#         print(question)
+#         asked.append(question)
+#         write_to_file(question)
+#         text_to_speech(question)  # ask question
+
+#         actual_answer = x['Actual Answer'].to_string()
+
+#         candidate_response = speech_to_text()
+#         print(candidate_response)
+#         write_to_file(candidate_response)
+       
+#         # audio_properties = audio_classifier()
+#         similarity = context(actual_answer, candidate_response)
+#         write_to_file(str(similarity))
+#         print(similarity)
+#         face_functions.append_face_to_file()
+#         next_question(similarity, x, data, driver)
+
+# def skill_question(df, difficulty, subject, driver):
+#     global interview_score, question_flag, count
+
+#     if question_flag == False:
+#         return interview_score
+#     if count > 5:
+#         return interview_score
+#     file = open('report_file.txt', 'r', encoding='utf-8', errors='ignore')
+#     data = file.readlines()
+#     text = []
+#     for line in data:
+#         word = line.split()
+#         text.append(word)
+
+#     index = 0
+#     for i in range(len(text)):
+#         if len(text[i]) > 0:
+#             if text[i][0] == 'Skills:':
+#                 index = i
+#                 break
+
+#     skills = text[index + 1]
+#     # print(skills)
+#     final_questions = []
+#     final_answers = []
+#     subject = skills[random.randint(0, len(skills)-1)]
+#     print(subject)
+#     # subject = 'Python'
+#     url = f"https://www.interviewbit.com/{subject}-interview-questions/"
+#     val = url
+#     print(url)
+#     response = requests.get(url)
+#     if response.status_code == 200:
+#         wait = WebDriverWait(driver, 10)
+#         driver.get(val)
+#         get_url = driver.current_url
+#         wait.until(EC.url_to_be(val))
+#         page_source = driver.page_source
+#         soup = BeautifulSoup(page_source, features="html.parser")
+
+#         articles = soup.find_all('h3')
+#         questions = []
+#         for article in articles:
+#             questions.append(article.get_text())
+#         final_questions = []
+#         for i in questions:
+#             if 48 <= ord(i[0]) <= 57:
+#                 final_questions.append(i)
+
+#         answers = soup.find_all('article', attrs={'class': 'ibpage-article'})
+#         final_answers = []
+#         for answer in answers:
+#             final_answers.append(answer.get_text())
+#         for i in range(len(final_answers)):
+#             final_answers[i] = final_answers[i].replace("\n", " ")
+#         print(final_questions)
+#         index = random.randint(0, len(final_questions))
+#         question = final_questions[index]
+#         if question not in asked:
+#             print(subject, " - ", question)
+#             asked.append(question)
+#             write_to_file(question)
+#             text_to_speech(question)
+#             actual_answer = final_answers[index]
+#             print(actual_answer)
+#             # get anscandidate_response
+#             candidate_response = speech_to_text()
+            
+#             write_to_file(candidate_response)
+            
+#             # audio_properties = audio_classifier()
+#             similarity = context(actual_answer, candidate_response)
+#             write_to_file(str(similarity))
+#             x = df.sample()
+#             next_question(similarity, x, df, driver)
+#     else:
+#         print(subject, "Website not found")
+#         ask_question(df, difficulty, subject, driver)
 
 
 def write_to_file(data):
