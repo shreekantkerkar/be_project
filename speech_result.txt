@@ -1,1 +1,1 @@
-we can use CSS to a basically write custom fonts and Colours for colours we need to give colour as the attribute and we can mention any name of the colour which we want to give in for custom font we need to import it from any website and then we can directly apply the phone on any HTML field like a tag or paragraph or may be H1
+ok so there are different types of cubes like circular queue is Priority Queue simple queue and double ended queue which is also called

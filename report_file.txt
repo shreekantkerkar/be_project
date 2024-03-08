@@ -1012,3 +1012,17 @@ confidence: 44.44%	 nervousness: 15.87%	 neutral: 79.37%
 Based on your description of the translation and compilation phases of the JSP page lifecycle, how do these phases impact the ability of JSP pages to dynamically adapt to different user requests and data? Can you provide an example to demonstrate this adaptability and how it enhances the user experience?
 Number of change Tabs =6
 
+6    Describe the different types of queues and their applications.
+ok so there are different types of cubes like circular queue is Priority Queue simple queue and double ended queue which is also called
+57
+confidence: 37.57%	 nervousness: 31.36%	 neutral: 62.13%
+
+Follow-up question:
+
+"Thank you for explaining the various queue types. Could you provide an example of a real-world scenario where you have successfully implemented a particular queue type and discuss the specific benefits it brought to the system?"
+Number of change Tabs =0
+
+aalekh for handling the traffic in the website for whenever we go back and front in the website we use queue and in routers and switches in the networking we use queue and also while the CPU scheduling we use
+52
+confidence: 33.43%	 nervousness: 33.15%	 neutral: 66.85%
+

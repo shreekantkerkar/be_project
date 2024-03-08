@@ -1,21 +1,21 @@
 Question Number,Question
-0,What are the fundamental principles of object-oriented programming?
-1,Describe the concept and implementation of a stack data structure.
-2,Explain the difference between relational and NoSQL database management systems.
-3,Write a SQL query to retrieve data based on multiple criteria.
-4,Discuss the protocols and characteristics of computer networks.
-5,What is the role of an operating system in managing computer resources?
-6,Describe the different types of queues and their applications.
-7,Explain the concepts of binary search trees and their applications.
-8,How would you implement an array to store and manipulate data efficiently?
-9,Describe the architecture and features of Java Spring Framework.
-10,What are the advantages and disadvantages of using JSP for web development?
-11,How would you use Chart.js to create interactive data visualizations?
-12,Explain the features and benefits of Oracle DB as a database management system.
-13,What are the key elements and principles of HTML and CSS web development?
-14,How would you implement a React application and describe its features?
-15,Explain the role and advantages of Node.js in web development.
-16,How would you set up an Express.js application and describe its features?
-17,Describe the features and benefits of using Bootstrap for web development.
-18,How would you use Postman for API testing and development?
-19,Explain the benefits and best practices for using GitHub for code collaboration.
+0,Explain the concept of encapsulation in object-oriented programming.
+1,Describe the difference between a stack and a queue data structure.
+2,Discuss the role of a database management system in data management.
+3,Write a SQL query to retrieve data from a table where a specific column value matches a given input.
+4,Explain the different layers of the TCP/IP model in computer networks.
+5,Describe the key responsibilities of an operating system.
+6,Explain the concept of a binary tree data structure and its applications.
+7,Discuss the advantages of using arrays in programming.
+8,Explain the purpose of a version control system like Git.
+9,Describe the main concepts of the Spring Boot framework.
+10,Explain the difference between HTML and CSS in web development.
+11,Discuss the role of React Js in creating interactive user interfaces.
+12,Explain the use of Nodejs and Express Js in server-side development.
+13,Describe the functionality of the Bootstrap framework in web design.
+14,Explain how to use Postman for API testing.
+15,Describe the benefits of using Oracle DB as a database solution.
+16,Explain the concept of indexing in a database.
+17,Discuss the different types of database normalization.
+18,Describe the role of a foreign key in a relational database.
+19,Explain the difference between MySQL and Oracle DB.
