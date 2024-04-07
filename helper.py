@@ -153,7 +153,7 @@ def get_requirements(doc):
     req_tokens = []
     flag = False
     for i in doc:
-        if 'Requirements' in i or 'REQUIREMENTS' in i:
+        if 'Requirements' in i or 'REQUIREMENTS' in i or 'skills' in i or 'SKILLS' in i:
             req_tokens.append(i)
             flag = True
         elif flag:

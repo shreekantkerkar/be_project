@@ -1,21 +1,22 @@
 Question Number,Question
-0,Explain the concept of encapsulation in object-oriented programming.
-1,Describe the difference between a stack and a queue data structure.
-2,Discuss the role of a database management system in data management.
-3,Write a SQL query to retrieve data from a table where a specific column value matches a given input.
-4,Explain the different layers of the TCP/IP model in computer networks.
-5,Describe the key responsibilities of an operating system.
-6,Explain the concept of a binary tree data structure and its applications.
-7,Discuss the advantages of using arrays in programming.
-8,Explain the purpose of a version control system like Git.
-9,Describe the main concepts of the Spring Boot framework.
-10,Explain the difference between HTML and CSS in web development.
-11,Discuss the role of React Js in creating interactive user interfaces.
-12,Explain the use of Nodejs and Express Js in server-side development.
-13,Describe the functionality of the Bootstrap framework in web design.
-14,Explain how to use Postman for API testing.
-15,Describe the benefits of using Oracle DB as a database solution.
-16,Explain the concept of indexing in a database.
-17,Discuss the different types of database normalization.
-18,Describe the role of a foreign key in a relational database.
-19,Explain the difference between MySQL and Oracle DB.
+0,Describe your approach to designing and implementing a reusable and testable codebase.
+1,"How do you design a low-latency and high-availability application, and what are the key factors to consider?"
+2,Explain the security measures you have implemented in your projects to protect data integrity and confidentiality.
+3,"Discuss your experience with performance testing and optimization techniques, and provide an example of how you improved the performance of an application."
+4,What are the key principles and best practices of MERN stack development?
+5,How do you demonstrate strong communication and interpersonal skills in a technical role?
+6,Provide an example of a complex problem you solved independently with minimal supervision.
+7,Describe your strategies for ensuring high attention to detail in your work.
+8,Explain how you apply an analytical mindset to solve technical challenges.
+9,How does your Computer Science or Statistics degree prepare you for a role in software development?
+10,What is your experience using B.E./B.Tech. qualifications to generate top-notch interview questions?
+11,How would you approach designing a database using MySQL?
+12,How do you write content that is both engaging and informative?
+13,Describe your experience using Springboot and JSP for web development.
+14,How do you use Chart.js to visualize data effectively?
+15,What are the key concepts and techniques involved in using Oracle DB?
+16,How do you implement HTML and CSS to create visually appealing web pages?
+17,"What is your experience using React Js, Nodejs, and Express Js for frontend and backend development?"
+18,How do you use Bootstrap to create responsive and mobile-friendly web designs?
+19,Explain your experience using Postman for API testing and development.
+20,How do you use Github for version control and collaboration?

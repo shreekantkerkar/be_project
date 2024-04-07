@@ -88,10 +88,18 @@
       <h3>3. Do not change tabs</h3>
       <h1>Resume Parser</h1>
 
-      <form action="/parse_resume" method="post" enctype="multipart/form-data">
-          <input type="file" name="resume" accept=".pdf">
-          <input type="submit" value="Parse Resume">
-      </form>
+      <form action="/parse_resume_and_jobdesc" method="post" enctype="multipart/form-data">
+        <label for="resume">Resume:</label>
+        <input type="file" name="resume" id="resume" accept=".docx,.pdf"><br>
+    
+        <label for="job_description">Job Description:</label>
+        <input type="file" name="job_description" id="job_description" accept=".docx,.pdf"><br>
+    
+        <input type="submit" value="Submit">
+    </form>
+    
+    
+
       <script></script>
     </center>
   </body>

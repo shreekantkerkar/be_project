@@ -309,6 +309,26 @@ def start_file(job_description, filename):
         report_file.write("\n")
         report_file.write("\n")
 
+
+def parseJobDescription(filename):
+    if filename[len(filename)-1] == 'x':
+        text = helper.extract_text_from_docx(filename)
+    else:
+        text = helper.extract_text_from_pdf(filename)
+
+   
+    #  # Job description part
+    # text_list = helper.extract_text_from_docx(job_description)
+    # text_list = text_list.replace('\n', ' ')
+
+    job_doc = helper.get_nlp(text)
+    # print(job_doc)
+    req_tokens = helper.get_requirements(job_doc)
+    print(req_tokens)
+    return req_tokens
+    # print()
+    
+    
 def extract_questions(text):
     
   # Improved regular expression for better question capture
@@ -327,20 +347,20 @@ def extract_questions(text):
 
   return all_questions
 
-def generate_questions(query):
+def answer_query(query):
     try:
         # Configure the model with your API key (replace with your actual key)
         response = gem_model.generate_content(query)
         return response.text
     except Exception as e:
-        print(f"Error generating questions: {e}")
-        return "Failed to generate questions."
+        print(f"Error generating response: {e}")
+        return "Failed to generate response."
     
 @app.route('/')
 def index():
     return render_template('index.html')
 
-@app.route('/parse_resume', methods=['POST'])
+@app.route('/parse_resume_and_jobdesc', methods=['POST'])
 def parse_resume_route():
     f1 = request.files['resume']
     f1.save(f1.filename)
@@ -348,15 +368,27 @@ def parse_resume_route():
     result = parse_resume(f1.filename)
     all_questions = []
 
+    f2 = request.files['job_description']
+    f2.save(f2.filename)
+    job_description_parser = parseJobDescription(f2.filename)
+    print(job_description_parser)
+    job_desc_skillstring = ', '.join(job_description_parser)
+    query1 = job_desc_skillstring + " Filter out the valid technical skills and return a list containing all the valid skills from which interview questions could be asked without mentioning any title or description."
+    valid_skills_from_job_desc = answer_query(query1)
+    print(valid_skills_from_job_desc)
     
+    
+    if(valid_skills_from_job_desc=="Failed to generate response."):
+        valid_skills_from_job_desc = job_description_parser
     
     skills_string = ', '.join(skills_from_resume)
+    # job_desc_skills = ', '.join(valid_skills_from_job_desc)
     query = skills_string + " generate top 10 interview questions from each skills mentioned. return a list containing all the extracted interview questions, without mentioning the skill name it belong to as the title."
     print(query)
     # res = gem_model.generate_content(query)
     # text = res.text
-    res = generate_questions(query)
-    if(res=="Failed to generate questions."):
+    res = answer_query(query)
+    if(res=="Failed to generate response."):
         for skill in skills_from_resume:
             query_for_web_scrapping = f"{skill} top interview questions"
             questions = scrape_questions_from_search(query_for_web_scrapping, num_results=2)
