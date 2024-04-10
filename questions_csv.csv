@@ -1,22 +1,18 @@
 Question Number,Question
-0,Describe your approach to designing and implementing a reusable and testable codebase.
-1,"How do you design a low-latency and high-availability application, and what are the key factors to consider?"
-2,Explain the security measures you have implemented in your projects to protect data integrity and confidentiality.
-3,"Discuss your experience with performance testing and optimization techniques, and provide an example of how you improved the performance of an application."
-4,What are the key principles and best practices of MERN stack development?
-5,How do you demonstrate strong communication and interpersonal skills in a technical role?
-6,Provide an example of a complex problem you solved independently with minimal supervision.
-7,Describe your strategies for ensuring high attention to detail in your work.
-8,Explain how you apply an analytical mindset to solve technical challenges.
-9,How does your Computer Science or Statistics degree prepare you for a role in software development?
-10,What is your experience using B.E./B.Tech. qualifications to generate top-notch interview questions?
-11,How would you approach designing a database using MySQL?
-12,How do you write content that is both engaging and informative?
-13,Describe your experience using Springboot and JSP for web development.
-14,How do you use Chart.js to visualize data effectively?
-15,What are the key concepts and techniques involved in using Oracle DB?
-16,How do you implement HTML and CSS to create visually appealing web pages?
-17,"What is your experience using React Js, Nodejs, and Express Js for frontend and backend development?"
-18,How do you use Bootstrap to create responsive and mobile-friendly web designs?
-19,Explain your experience using Postman for API testing and development.
-20,How do you use Github for version control and collaboration?
+0,What is the difference between a stack and a queue?
+1,How would you design a database schema for a social media platform?
+2,What is the difference between SQL and NoSQL databases?
+3,What is the TCP/IP protocol and how does it work?
+4,What is the difference between a process and a thread?
+5,What is a binary tree and how can it be used to store data?
+6,What is the difference between an array and a linked list?
+7,What are the different types of programming languages and how do they differ?
+8,What is Springboot and how is it used?
+9,What is HTML5 and how is it used to create web pages?
+10,What is the difference between CSS and JavaScript?
+11,What is React Js and how is it used to create user interfaces?
+12,What is Nodejs and how is it used to create server-side applications?
+13,What is Express Js and how is it used to create RESTful APIs?
+14,What is Bootstrap and how is it used to create responsive web designs?
+15,What is Postman and how is it used for API testing?
+16,What is Github and how is it used for version control?

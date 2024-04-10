@@ -1026,3 +1026,91 @@ aalekh for handling the traffic in the website for whenever we go back and front
 52
 confidence: 33.43%	 nervousness: 33.15%	 neutral: 66.85%
 
+Number of change Tabs =0
+
+4    What are the key principles and best practices of MERN stack development?
+20    How do you use Github for version control and collaboration?
+9    How does your Computer Science or Statistics degree prepare you for a role in software development?
+Number of change Tabs =0
+
+5    How do you demonstrate strong communication and interpersonal skills in a technical role?
+Nisar Ke Samne
+0
+confidence: 59.59%	 nervousness: 21.92%	 neutral: 36.99%
+
+Number of change Tabs =3
+
+Number of change Tabs =0
+
+13    Write HTML and CSS code to create a responsive web page.
+0    Describe the key concepts and principles of object-oriented programming.
+9    Describe the architecture and key features of a Springboot application.
+abe yaar right Kaise kya question object oriented programming revolves around demonstrating polymorphism encapsulation abstraction and inheritance abstraction means hiding the implementation details
+-5
+confidence: 57.33%	 nervousness: 12.93%	 neutral: 59.48%
+
+Number of change Tabs =0
+
+15    Explain the purpose and key features of Nodejs and Express Js.
+ok so node JS and Express JS are basically used as a backend language while developing any web website and key features are that it provides it allows the user to make asynchronous it is used with react JS as the front end and
+75
+confidence: 55.24%	 nervousness: 9.52%	 neutral: 70.48%
+
+**Next Question:**
+
+"You mentioned that Node.js and Express.js are primarily used as a backend language. Can you elaborate on how they differ from other backend languages such as PHP or Python? What unique advantages or disadvantages do they offer?"
+Python uses the Django designing Django Django the advantages of nodes and explain the simplicity that it provides while integrating the front end and it provides extensive libraries which
+52
+confidence: 66.93%	 nervousness: 4.72%	 neutral: 56.69%
+
+"Thank you for your explanation. You mentioned that Node.js and Express.js offer simplicity in integrating the front end. Can you provide a specific example of how this integration is simplified compared to using a backend language like Python or PHP? Additionally, what are some specific advantages and disadvantages of Node.js and Express.js in terms of performance, scalability, and security when compared to these other languages?"
+it will be easy for me to go with node.js and and in terms of performance it is quite slow but in terms of security it provides extensive libraries like jwt for integrating which we can use for generating a token which will be used for authorisation
+31
+confidence: 60.06%	 nervousness: 5.03%	 neutral: 69.81%
+
+11    Describe the main features and benefits of using Chart.js.
+Number of change Tabs =0
+
+which can be held which can help the user to gain a greater insight into the data set so it provides it provide various types of charts like histogram bar graph and many more which can be used for analysing the data and also analysing the designs or trends in the data
+62
+confidence: 69.87%	 nervousness: 0.0%	 neutral: 60.26%
+
+0    Explain the concept of object-oriented programming and its key principles.
+object oriented programming revolves around objects and classes their objects are available entities and classes are blueprint and there are four major concepts in encapsulate encapsulation abstraction inheritance in encapsulation we find the data instruction with implementation detail
+74
+6    Implement a queue using a linked list.
+linked list is a data structure where we have pointers and we connect a nodes using a previous and next pointer and for implementing a queue using linked list we will be implementing three operations push pop and search we will be keep
+38
+confidence: 43.18%	 nervousness: 20.0%	 neutral: 73.64%
+
+14    What is the difference between React Js and Angular Js, and when would you use each framework?
+also provides fast libraries which we can use to customise our front end and make easily integrated libraries which we can integrate for having code which are free made code for components like never footer and in English
+42
+confidence: 49.49%	 nervousness: 13.13%	 neutral: 74.75%
+
+6    Implement a queue using a linked list.
+Number of change Tabs =1
+
+song for implementing a queue using a linked list we will be operating history of functions rear push for
+34
+confidence: 38.75%	 nervousness: 25.0%	 neutral: 72.5%
+
+5    Explain the role of an operating system and its key functionalities.
+used for handling the internal internal scheduling of the resources in laptop or computer and management and it helps in resource management so it helps to locate the resources that there was happening
+51
+confidence: 44.35%	 nervousness: 12.5%	 neutral: 86.31%
+
+**Follow-up Question:**
+
+Based on your explanation, you mentioned that an operating system (OS) handles internal scheduling of resources. Could you elaborate on the specific resource types that an OS typically manages and the processes involved in their scheduling?
+show the resource types are basically memory and
+42
+confidence: 43.5%	 nervousness: 15.25%	 neutral: 82.49%
+
+14    Develop a React Js application and discuss its advantages over traditional web development approaches.
+Number of change Tabs =5
+
+create component based component based web application where we can create components of the code which are usable and it also provides provides libraries which we can which we can use for easy integration of various styles then it also
+48
+confidence: 44.67%	 nervousness: 12.3%	 neutral: 86.07%
+

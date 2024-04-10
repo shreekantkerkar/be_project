@@ -62,12 +62,14 @@ count = 0
 interview_score = 0
 asked = []
 candidate_answers = []
+# expected_answers = []
 similartiy_score = []
 flag = False
 candidate_data = {
     'questions_asked': [],
     'candidate_answers': [],
-    'similarity_score': []
+    'similarity_score': [],
+    'expected_answers':[]
 }
 
 curr_ques_count = 0
@@ -252,6 +254,16 @@ def count_records(csv_file_path):
         print(f"An error occurred: {e}")
         return 0
 
+def generate_improved_answer(query):
+    try:
+        # Request an improved answer or suggestions based on the query
+        response = gem_model.generate_content(query)
+        return response.text
+    except Exception as e:
+        print(f"Error generating improved answer: {e}")
+        return "Failed to generate improved answer."
+
+
 def next_question_ask(data,next_question_to_ask,driver):
     global interview_score, question_flag
     if question_flag == False:
@@ -279,9 +291,15 @@ def next_question_ask(data,next_question_to_ask,driver):
         write_to_file(str(similarity))
         similartiy_score.append(similarity)
         print(similarity)
+        # generating imporved answer
+        query = question + candidate_response + " in an interview oral how the answer can be improved"
+        improved_answer = generate_improved_answer(query)
+        expected_answer = improved_answer
+        
         candidate_data['questions_asked'].append(question)
         candidate_data['candidate_answers'].append(candidate_response)
         candidate_data['similarity_score'].append(similarity)
+        candidate_data['expected_answers'].append(expected_answer)
         face_functions.append_face_to_file()
         next_question(similarity, x, data, driver)
 
@@ -369,9 +387,17 @@ def ask_first_question(data, c, driver):
     similartiy_score.append(similarity)
     print("similarity")
     print(similarity)
+    
+    # generating imporved answer
+    query = first_question + candidate_response + " in an interview oral how the answer can be improved"
+   
+    improved_answer = generate_improved_answer(query)
+    expected_answer = improved_answer
+    
     candidate_data['questions_asked'].append(first_question)
     candidate_data['candidate_answers'].append(candidate_response)
     candidate_data['similarity_score'].append(similarity)
+    candidate_data['expected_answers'].append(expected_answer)
     face_functions.append_face_to_file()
     next_question(similarity, x, data, driver)
     return interview_score

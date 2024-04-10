@@ -1,1 +1,1 @@
-ok so there are different types of cubes like circular queue is Priority Queue simple queue and double ended queue which is also called
+used for handling the internal internal scheduling of the resources in laptop or computer and management and it helps in resource management so it helps to locate the resources that there was happening
