@@ -360,6 +360,10 @@ def answer_query(query):
 def index():
     return render_template('index.html')
 
+@app.route('/resume_parser_page')
+def resume_parser_page():
+    return render_template('resumeparser.html')
+
 @app.route('/parse_resume_and_jobdesc', methods=['POST'])
 def parse_resume_route():
     f1 = request.files['resume']

@@ -1,1 +1,1 @@
-used for handling the internal internal scheduling of the resources in laptop or computer and management and it helps in resource management so it helps to locate the resources that there was happening
+different types of operating systems are batch operating system schedulers are basically used for scheduling processes and allocating resources share resources and locks and advantages of them is using schedulers and operating system helps us to

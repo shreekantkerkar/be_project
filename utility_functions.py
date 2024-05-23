@@ -69,7 +69,8 @@ candidate_data = {
     'questions_asked': [],
     'candidate_answers': [],
     'similarity_score': [],
-    'expected_answers':[]
+    'expected_answers':[],
+    'emotions':[]
 }
 
 curr_ques_count = 0
@@ -300,7 +301,9 @@ def next_question_ask(data,next_question_to_ask,driver):
         candidate_data['candidate_answers'].append(candidate_response)
         candidate_data['similarity_score'].append(similarity)
         candidate_data['expected_answers'].append(expected_answer)
-        face_functions.append_face_to_file()
+        candidate_data['expected_answers'].append(expected_answer)
+        emotions = face_functions.append_face_to_file()
+        candidate_data['emotions'].append(emotions)
         next_question(similarity, x, data, driver)
 
 
@@ -398,7 +401,8 @@ def ask_first_question(data, c, driver):
     candidate_data['candidate_answers'].append(candidate_response)
     candidate_data['similarity_score'].append(similarity)
     candidate_data['expected_answers'].append(expected_answer)
-    face_functions.append_face_to_file()
+    emotions = face_functions.append_face_to_file()
+    candidate_data['emotions'].append(emotions)
     next_question(similarity, x, data, driver)
     return interview_score
 

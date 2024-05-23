@@ -39,7 +39,7 @@ def append_face_to_file():
         analyticsDict[key] = 0
     # print(analyticsDict)
     
-    return "done"
+    return mainstr
 
 def update_face_analytics(face_properties):
     if (len(face_properties)!=0 ):

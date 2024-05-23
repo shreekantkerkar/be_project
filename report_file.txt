@@ -1114,3 +1114,73 @@ create component based component based web application where we can create compo
 48
 confidence: 44.67%	 nervousness: 12.3%	 neutral: 86.07%
 
+Number of change Tabs =0
+
+14    What is Bootstrap and how is it used to create responsive web designs?
+3    What is the TCP/IP protocol and how does it work?
+bootstrap is used to create bootstrap is used as a styling library Framework wherein we can design dynamic pages using bootstrap TCP IP prot
+68
+confidence: 47.06%	 nervousness: 5.88%	 neutral: 94.12%
+
+Number of change Tabs =2
+
+15    Compare and contrast different types of database management systems.
+ok so there are different types of DBMS firstly classifying into SQL and nosql SQL databases are structured databases were in everything structured with the columns and rows and then there are no still there are four types first is graph based second is column based third is key value and fourth is
+72
+confidence: 50.0%	 nervousness: 0.0%	 neutral: 100.0%
+
+Based on your understanding of different database management systems, could you elaborate on the key advantages and limitations of using a graph-based DBMS compared to a column-based DBMS? Provide specific examples to illustrate your points.
+could be tracking down the patients from patient zero to the current patients in covid scenarios so this is one of the advantages of graph based DBMS over column is DBMS because column based again have limitations as they cannot give us dynamically in connected nodes
+70
+confidence: 72.22%	 nervousness: 0.0%	 neutral: 55.56%
+
+Given the example you provided, can you expand on why tracking down patients using a graph-based DBMS would be more advantageous than using a column-based DBMS? Discuss the specific capabilities of graph-based DBMSs that make them particularly suitable for this type of task.
+Number of change Tabs =0
+
+table format Mein bante waves structures 50 nervous
+0
+confidence: 100.0%	 nervousness: 0.0%	 neutral: 0.0%
+
+Number of change Tabs =0
+
+9    Why is the operating system important?
+act as an interface between the hardware and the users deadlock detection operating system
+28
+confidence: 56.05%	 nervousness: 12.1%	 neutral: 63.71%
+
+1    What is the need for OOPs?
+why abstraction you abstract the difficulties of the phone proper organisation management of the phone
+27
+confidence: 67.18%	 nervousness: 9.16%	 neutral: 47.33%
+
+10    What's the main purpose of an OS?
+Number of change Tabs =0
+
+Sports schedule of the processes to be to be done in the queue or deadlock for management of the hardware file management
+37
+confidence: 57.89%	 nervousness: 8.77%	 neutral: 66.67%
+
+3    What are the advantages and disadvantages of using a tree data structure?
+searching searching and storing the any particular object becomes quite efficient and its consumers it consumers time complexity is also implement binary search algorithm
+41
+confidence: 89.62%	 nervousness: 0.0%	 neutral: 20.75%
+
+Number of change Tabs =1
+
+14    Describe the different types of operating system schedulers and their advantages and disadvantages.
+different types of operating systems are batch operating system schedulers are basically used for scheduling processes and allocating resources share resources and locks and advantages of them is using schedulers and operating system helps us to
+54
+confidence: 63.55%	 nervousness: 2.8%	 neutral: 67.29%
+
+Could you elaborate on how operating system schedulers allocate resources and utilize locks within a batch operating system environment?
+Singapore that are used in Central process itself how many questions
+24
+confidence: 52.26%	 nervousness: 0.75%	 neutral: 93.98%
+
+1    Explain the difference between a stack and a queue, and provide examples of their applications.
+Number of change Tabs =0
+
+this was the first question this was my answer
+6
+confidence: 50.0%	 nervousness: 0.0%	 neutral: 100.0%
+

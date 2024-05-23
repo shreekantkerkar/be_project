@@ -70,6 +70,7 @@
             <th>Candidate Answer</th>
             <th>Similarity Score</th>
             <th>Expected Answer</th>
+            <th>Emotions</th>
         </tr>
         {% for i in range(candidate_data['questions_asked']|length) %}
         <tr>
@@ -77,6 +78,7 @@
             <td>{{ candidate_data['candidate_answers'][i] }}</td>
             <td>{{ candidate_data['similarity_score'][i] }}</td>
             <td>{{ candidate_data['expected_answers'][i] }}</td>
+            <td>{{ candidate_data['emotions'][i] }}</td>
             
         </tr>
         {% endfor %}

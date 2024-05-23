@@ -134,3 +134,108 @@ h2 > a:hover {
 #graph > svg {
   padding-left: 20px;
 }
+
+.title-nav {
+  font-size: 30px;
+  font-weight: 600;
+  color: white;
+  display: inline;
+  font-family: Helvetica, sans-serif;
+}
+
+.title-nav1 {
+  font-size: 18px;
+  font-weight: 500;
+  text-decoration: none;
+  color: white;
+  display: inline;
+  font-family: Helvetica, sans-serif;
+  padding-left: 50px;
+  transition: transform 0.5s ease-in-out;
+}
+
+.title-nav1:hover {
+  transform: scale(1.05);
+  font-size: 20px;
+} 
+
+.navi {
+  background-color: rgba(107, 107, 107, 0.134);
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  padding: 7px;
+  backdrop-filter: blur(10px);
+  z-index: 1;
+}
+
+.navibar::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.hope ul {
+  margin-top: 0;
+  padding-left: 5%;
+  list-style: none;
+  text-align: left;
+}
+
+.hope li {
+  display: inline-block;
+  margin-left: 35px;
+  margin-right: 35px;
+}
+
+.hope li a {
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+  font-size: 17px;
+  font-family: Glorify;
+  transition: 0.3s;
+}
+
+.hope li a:hover {
+  color: rgb(255, 255, 255);
+  font-size: larger;
+  padding: auto;
+  text-decoration: none;
+}
+
+.dropdown-item:hover {
+  color: rgb(0, 0, 0);
+  font-size: larger;
+  padding: auto;
+  text-decoration: none;
+}
+
+.hope a .o {
+  margin-bottom: 0px;
+}
+
+.hope ul .pls {
+  padding-left: 300px;
+}
+
+.hope ul .plss {
+  padding-right: 350px;
+}
+
+@media screen and (min-width: 767px) {
+  .navbar-toggler {
+    margin: 0px !important;
+  }
+}
+
+/* @media screen and (max-width: 1345px) {
+  .navbar-collapse{
+    display: none !important;
+  }
+}  */
+
+ul.dropdown-menu.show {
+  background-color: #262626;
+  text-decoration: none;
+}

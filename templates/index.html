@@ -1,106 +1,556 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Question</title>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sounding Board</title>
+
     <style>
-      @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans&family=Roboto+Mono:wght@500&display=swap');
+    body, html {
+    padding: 0;
+    width: auto;
+    height: auto;
+    align-items: center;
+    background-color: white;
+    overflow-y: auto;
+    overflow-x: hidden;
+    font-family: Helvetica, sans-serif;
+}
 
-      body {
-        background-color: #fcffe7;
-      }
-
-      h1 {
-        color: #2b3467;
-        text-align: center;
-        font-family: 'Trebuchet MS', Helvetica, sans-serif, monospace;
-      }
-
-      h3 {
-        color: #2b3467;
-        text-align: center;
-        font-family: 'Roboto Mono', monospace;
-        margin-top: 2em;
-      }
-
-      button {
-        font-size: 20px;
-        padding: 5px;
-        display: block;
-        color: #fcffe7;
-        background-color: #eb455f;
-        border-radius: 5px;
-        width: 10em;
-        font-family: 'Josefin Sans', sans-serif;
-      }
-
-      button:hover {
-        box-shadow: 2px 2px 1px 2px #000000;
-        cursor: pointer;
-        color: #2b3467;
-        background-color: #fdfef0;
-      }
-      form {
-        background-color: #fff;
-        padding: 20px;
-        border-radius: 8px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        width: 300px;
+@keyframes animateBackground {
+    0%, 100% {
+      background-size: 100% 100%;
+      background-position: center;
     }
-
-    input[type="file"] {
-        display: block;
-        margin-bottom: 15px;
+    50% {
+      background-size: 150% 150%;
+      background-position: top;
     }
+}
 
-    input[type="submit"] {
-        background-color: #007bff;
-        color: #fff;
-        padding: 10px 15px;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-        font-size: 16px;
+@keyframes fadeInZoom {
+    from {
+        opacity: 0;
+        transform: scale(0.5); 
+        letter-spacing: -15px; 
     }
+    to {
+        opacity: 1;
+        transform: scale(1); 
+        letter-spacing: normal;
+    }
+}
+  
+.title {
+    font-size: 150px;
+    font-weight: bold;
+    background-image: url('https://thumbnails.production.thenounproject.com/voqWLICBJ3xdPpL8NlJUtbhi2ks=/fit-in/1000x1000/photos.production.thenounproject.com/photos/CEC40731-8C0C-437E-9FC3-CFCF5564E08B.jpg');
+    background-size: cover;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    display: inline;
+    font-family: Helvetica, sans-serif;
+    animation: fadeInZoom 3s ease-out forwards, animateBackground 7s infinite ease-in-out;
+}
 
-    input[type="submit"]:hover {
-        background-color: #0056b3;
+.title-nav {
+    font-size: 30px;
+    font-weight: 600;
+    color: white;
+    display: inline;
+    font-family: Helvetica, sans-serif;
+}
+
+.title-nav1 {
+    font-size: 18px;
+    font-weight: 500;
+    text-decoration: none;
+    color: white;
+    display: inline;
+    font-family: Helvetica, sans-serif;
+    padding-left: 50px;
+    transition: transform 0.5s ease-in-out;
+}
+
+.title-nav1:hover {
+    transform: scale(1.05);
+    font-size: 20px;
+}  
+
+@keyframes fadeInContent {
+    from {
+        opacity: 0;
     }
+    to {
+        opacity: 1;
+    }
+}
+
+.powered-by {
+    width: 100%;
+    text-align: center;
+    font-weight: lighter;
+    margin-top: 20px;
+    padding: 20px;
+    font-size: 30px;
+    color: #1d1d1f;
+    opacity: 0; 
+    animation: fadeInContent 2s ease forwards; 
+    animation-delay: 2s;
+}
+
+.google {
+    width: 100%;
+    text-align: center;
+    font-weight: lighter;
+    padding: 10px;
+    font-size: 25px;
+    color: #1d1d1f;
+}
+
+.intro {
+    width: auto;
+    text-align: center;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    font-size: 25px;
+}
+
+.gemini-image {
+    height: 35px; 
+    width: auto;
+    vertical-align: text-bottom;
+    margin-left: 5px;
+}
+
+.content {
+    text-align: center;
+    align-items: center;
+    align-content: center;
+    width: auto;
+    height: 100%;
+}
+
+.container2 {
+    background-color: #f5f5f7;
+    padding-left: 15%;
+    padding-right: 15%;
+    opacity: 0; 
+    height: 100%;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap; /* Allows items to wrap if the space is not enough */
+    align-items: flex-start; /* Aligns items to the start of the cross axis (top) */
+    justify-content: flex-start;
+}
+
+.row-card {
+    display: flex;
+    flex-wrap: wrap; /* Allows items to wrap if the space is not enough */
+    align-items: center; /* Aligns items to the start of the cross axis (top) */
+    justify-content: space-around;
+    padding: 5%;
+    padding-top: 10%;
+    
+}
+
+.row-card1 {
+    display: flex;
+    flex-wrap: wrap; /* Allows items to wrap if the space is not enough */
+    align-items: center; /* Aligns items to the start of the cross axis (top) */
+    justify-content: space-around;
+    padding-left: 10%;
+    padding-right: 10%;
+    padding-top: 10%;
+    
+}
+
+.heading {
+    flex: 1; /* Allows the item to grow */
+    min-width: 100px; /* Minimum width before wrapping, adjust as needed */
+    margin-right: 20px; /* Adds some space between the h3 and the p */
+    align-items: flex-start !important;
+    color: #1d1d1f;
+    text-align: left !important;
+}
+
+.para {
+    flex: 1; /* Allows the item to grow, taking more space than the h3 */
+    font-size: 20px;
+    text-justify: distribute-all-lines;
+    justify-content: flex-start;
+    text-align: left !important;
+    color: #86868b;
+    line-height: 30px;
+}
+
+@media (max-width: 768px) { /* Adjust breakpoint as needed */
+    .row {
+        flex-direction: column;
+    }
+    .heading,
+    .para {
+        min-width: 0; /* Resets min-width for smaller screens */
+        flex: auto; /* Resets flex-grow behavior */
+        margin-right: 0; /* Resets the margin between elements */
+    }
+}
+
+.start {
+    background-image: url("https://thumbnails.production.thenounproject.com/voqWLICBJ3xdPpL8NlJUtbhi2ks=/fit-in/1000x1000/photos.production.thenounproject.com/photos/CEC40731-8C0C-437E-9FC3-CFCF5564E08B.jpg");
+    background-size: cover;
+    text-align: center;
+    justify-content: center;
+    padding-bottom: 9%;
+    width: 100vw;
+    height: 100%;
+}
+
+.start-now {
+    display: flex;
+    font-size: 20px;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    height: max-content;
+    color: #1d1d1f;
+    background-color: white;
+    opacity: 1;
+    text-align: left;
+    cursor: pointer;
+    border-radius: 980px;
+    transition: transform 0.5s ease;
+}
+
+.start-now:hover {
+    background-color: #f5f5f7;
+    transform: scale(1.05);
+}
+
+.start-nowh {
+    position: relative;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    height: max-content;
+    color: #1d1d1f;
+    background-color: white;
+    cursor: pointer;
+    border-radius: 980px;
+    overflow: hidden;
+    font-size: 20px;
+    border: 2px solid #1d1d1f;
+    transition: color 0.5s ease, transform 0.5s ease;
+    animation: fadeInContent 5s ease forwards !important; 
+}
+
+.start-nowh span {
+    position: relative;
+    z-index: 2; /* Ensure text stays on top */
+}
+
+.start-nowh::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('https://thumbnails.production.thenounproject.com/voqWLICBJ3xdPpL8NlJUtbhi2ks=/fit-in/1000x1000/photos.production.thenounproject.com/photos/CEC40731-8C0C-437E-9FC3-CFCF5564E08B.jpg');
+    background-size: cover;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    z-index: 1; /* Ensure this is below the text */
+}
+
+.start-nowh:hover::before {
+    opacity: 1;
+}
+
+.start-nowh:hover span {
+    color: rgb(0, 0, 0); /* Change text color to white on hover */
+}
+
+.start-nowh:hover {
+    transform: scale(1.05);
+}
+
+.bclass {
+    
+    justify-self: center;
+    justify-content: center;
+    display: flex;
+    margin-top: 7%;
+}
+
+.bclassh {
+    width: 100vw;
+    justify-self: center;
+    justify-content: center;
+    display: flex;
+    padding-top: 5%;
+    padding-bottom: 7%;
+}
+
+.body-text {
+    flex: 1; /* Allows the item to grow, taking more space than the h3 */
+    font-size: 17px;
+    text-justify: distribute-all-lines;
+    justify-content: flex-end !important;
+    text-align: left !important;
+    color: #86868b;
+    line-height: 25px;
+}
+
+.card {
+    width: 27%;
+    height: 70vh;
+    background: rgb(255, 255, 255);
+    position: relative;
+    border-radius: 10px;
+    transition: transform 0.5s ease;
+}
+
+.card1 {
+    width: 35%;
+    height: 40vh;
+    background: rgb(255, 255, 255);
+    position: relative;
+    border-radius: 10px;
+}
+
+.card:hover {
+    transform: scale(1.05); /* Scales up the card by 5% */
+}
+
+.cont {
+    margin: 15%;
+}
+
+.head {
+    padding-top: 14%;
+}
+
+/* Initial state of sections */
+section {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+/* Class to add when section is visible */
+.is-visible {
+    opacity: 1;
+    transform: translateY(0px);
+}
+
+.navi {
+    background-color: rgba(107, 107, 107, 0.134);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    padding: 7px;
+    backdrop-filter: blur(10px);
+    z-index: 1;
+  }
+  
+  .navibar::after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  
+  .hope ul {
+    margin-top: 0;
+    padding-left: 5%;
+    list-style: none;
+    text-align: left;
+  }
+  
+  .hope li {
+    display: inline-block;
+    margin-left: 35px;
+    margin-right: 35px;
+  }
+  
+  .hope li a {
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    font-size: 17px;
+    font-family: Glorify;
+    transition: 0.3s;
+  }
+  
+  .hope li a:hover {
+    color: rgb(255, 255, 255);
+    font-size: larger;
+    padding: auto;
+    text-decoration: none;
+  }
+  
+  .dropdown-item:hover {
+    color: rgb(0, 0, 0);
+    font-size: larger;
+    padding: auto;
+    text-decoration: none;
+  }
+  
+  .hope a .o {
+    margin-bottom: 0px;
+  }
+  
+  .hope ul .pls {
+    padding-left: 300px;
+  }
+  
+  .hope ul .plss {
+    padding-right: 350px;
+  }
+  
+  @media screen and (min-width: 767px) {
+    .navbar-toggler {
+      margin: 0px !important;
+    }
+  }
+  
+  /* @media screen and (max-width: 1345px) {
+    .navbar-collapse{
+      display: none !important;
+    }
+  }  */
+  
+  ul.dropdown-menu.show {
+    background-color: #262626;
+    text-decoration: none;
+  }
+
+textarea {
+    width: 100%; /* Adjust width to fit the form or container */
+    height: 150px; /* Adjust height as needed */
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+input[type=checkbox]:checked + label {
+    color: green;
+}
+input[type=checkbox]:disabled + label {
+    color: #ccc; /* Gray out the label text to show it's disabled */
+}
+
     </style>
-  </head>
-  <body style="background-image: url('/static/bg2.jpg'); background-size: cover">
-    <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
-    <center>
-      <h1>AI Automated Interview System</h1>
-      <!-- <img src="inter.png" height="300" alt="interview" /> -->
-      <form action="/interview" method="post">
-        <h3>Start the interview</h3>
-        <br />
-        <button id="start" type="submit">Start</button>
-        <br /><br /><br />
-      </form>
+</head>
+<body>
+    <section class="sounding-board">
+        <div class="content">
+            <div class="head">
+                <div class="title">Sounding Board</div>
+                <div class="powered-by">
+                    Your Personal AI-Powered Interview Coach
+                </div>
+                <div class="bclassh">
+                    <button class="button start-nowh" id="startInterviewButton"><span>Start Your Interview Preparation Now</span></button>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="container2">
+        <div class="intro">
+            <div >
+                <h3 class="heading", style="text-align: center !important; align-items: center !important; font-size: 50px !important;">Welcome to The Sounding Board</h3>
+                <p class="para">Your next-generation partner in mastering the art of interviews. In today's competitive job market, standing out in interviews is not just about what you know; it's about how you present yourself, your confidence, and your ability to adapt to dynamic questioning. That's where we come in. Sounding Board leverages cutting-edge AI, powered by Google's advanced technologies, to offer a personalized interview coaching experience unlike any other.</p>
+            </div>
+        </div>
+        <div class="intro">
+            <div class="row">
+                <h3 class="heading">Why Sounding Board?</h3>
+                <p class="para" style="padding-bottom: 40px;"><span style="color: #1d1d1f;">Sounding Board</span> isn't just a practice platform; it's a transformational journey tailored to each individual's unique career aspirations and strengths. Our AI-driven system goes beyond generic questions, diving deep into your resume and the specifics of your desired role to craft questions that challenge and prepare you for anything the real world throws your way.</p>
+            </div>
+        </div>
+    </section>
 
-      <h1>Instructions for the interview -</h1>
-      <h3>1. Try to answer maximum questions</h3>
-      <h3>2. Please speak loud and clear</h3>
-      <h3>3. Do not change tabs</h3>
-      <h1>Resume Parser</h1>
+    <section class="start">
+        <div class="row-card">
+            <div class="card">
+                <div class="cont">
+                    <h3 class="header" style="font-size: 30px; padding-bottom: 4%;">Adaptive Learning at Its Core</h3>
+                    
+                    <div class="body-text">At the heart of <span style="color: #1d1d1f;">Sounding Board</span> lies our adaptive learning technology. This isn't about memorizing answers; it's about developing an agile, thoughtful approach to interviews. Our system dynamically adjusts to your responses, ensuring that with every question, you're not just preparing but evolving.</div>
+                </div>
+            </div>
 
-      <form action="/parse_resume_and_jobdesc" method="post" enctype="multipart/form-data">
-        <label for="resume">Resume:</label>
-        <input type="file" name="resume" id="resume" accept=".docx,.pdf"><br>
-    
-        <label for="job_description">Job Description:</label>
-        <input type="file" name="job_description" id="job_description" accept=".docx,.pdf"><br>
-    
-        <input type="submit" value="Submit">
-    </form>
-    
-    
+            <div class="card">
+                <div class="cont">
+                    <h3 class="header" style="font-size: 30px; padding-bottom: 4%;">Instant, Actionable Feedback</h3>
+                    
+                    <div class="body-text">Feedback is the cornerstone of growth. <span style="color: #1d1d1f;">Sounding Board</span> provides immediate, detailed feedback on your responses, highlighting strengths and pinpointing areas for improvement. But we don't stop there. Our platform offers targeted practice questions and resources, guiding you on your path to excellence.</div>
+                </div>
+            </div>
 
-      <script></script>
-    </center>
-  </body>
+            <div class="card">
+                <div class="cont">
+                    <h3 class="header" style="font-size: 30px; padding-bottom: 4%;">Empowering Confidence</h3>
+                    
+                    <div class="body-text">Confidence can make or break an interview. <span style="color: #1d1d1f;">Sounding Board</span> is designed to build your confidence step by step, transforming nervous energy into poised assurance. By practicing in a risk-free, supportive environment, you'll walk into your next interview ready to shine.</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="bclass">
+            <button class="button start-nowh" id="startInterviewButton1"><span>Start Your Interview Preparation Now</span></button>
+        </div>
+    </section>
+
+    <div class="foot">
+        <div class="google">
+            Powered by Google
+            <img src="https://upload.wikimedia.org/wikipedia/commons/4/45/Gemini_language_model_logo.png" alt="Gemini" class="gemini-image"/>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+    const sections = document.querySelectorAll('section');
+    const startButton = document.querySelector('.button.start-now');
+
+    const checkVisibility = () => {
+        const triggerBottom = window.innerHeight * 0.8;
+
+        sections.forEach(section => {
+            const sectionTop = section.getBoundingClientRect().top;
+
+            if (sectionTop < triggerBottom) {
+                section.classList.add('is-visible');
+            } else {
+                section.classList.remove('is-visible');
+            }
+        });
+    };
+
+    window.addEventListener('scroll', checkVisibility);
+    checkVisibility();
+
+    const startInterviewButton = document.getElementById('startInterviewButton');
+
+    startInterviewButton.addEventListener('click', function() {
+        window.location.href = '/resume_parser_page';
+    });
+
+    const startInterviewButton1 = document.getElementById('startInterviewButton1');
+
+    startInterviewButton1.addEventListener('click', function() {
+        window.location.href = '/resume_parser_page';
+    });
+});
+
+    </script>
+</body>
 </html>

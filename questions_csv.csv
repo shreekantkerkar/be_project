@@ -1,18 +1,21 @@
 Question Number,Question
-0,What is the difference between a stack and a queue?
-1,How would you design a database schema for a social media platform?
-2,What is the difference between SQL and NoSQL databases?
-3,What is the TCP/IP protocol and how does it work?
-4,What is the difference between a process and a thread?
-5,What is a binary tree and how can it be used to store data?
-6,What is the difference between an array and a linked list?
-7,What are the different types of programming languages and how do they differ?
-8,What is Springboot and how is it used?
-9,What is HTML5 and how is it used to create web pages?
-10,What is the difference between CSS and JavaScript?
-11,What is React Js and how is it used to create user interfaces?
-12,What is Nodejs and how is it used to create server-side applications?
-13,What is Express Js and how is it used to create RESTful APIs?
-14,What is Bootstrap and how is it used to create responsive web designs?
-15,What is Postman and how is it used for API testing?
-16,What is Github and how is it used for version control?
+0,Explain the fundamental principles of object-oriented programming.
+1,Describe the concept and implementation of a stack data structure.
+2,Discuss the advantages and applications of database management systems.
+3,Write an SQL query to perform a complex data retrieval operation.
+4,Describe the different layers and protocols involved in a typical computer network.
+5,Explain the key concepts and components of an operating system.
+6,Implement a queue data structure using an array or linked list.
+7,Describe the different types of tree data structures and their applications.
+8,Implement an algorithm to search for an element in a sorted array.
+9,Discuss the advantages and disadvantages of different programming languages.
+10,Design a database schema for a specific business application.
+11,Write a JavaScript function to manipulate DOM elements and handle user interactions.
+12,Describe the principles of CSS and how it is used to style web pages.
+13,Explain the different types of operating system kernels and their advantages.
+14,Implement a hashing algorithm and discuss its applications.
+15,Design and implement a linked list data structure.
+16,Describe the advantages and limitations of using arrays in programming.
+17,Discuss the key concepts of computer security and the measures to protect systems.
+18,Explain the role of middleware in distributed systems and its benefits.
+19,Describe the different types of software development methodologies and their advantages.

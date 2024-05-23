@@ -1,35 +1,12 @@
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Resume Parser - Result</title>
-
-    <style>
-        
-    body, html {
+body, html {
     padding: 0;
     width: auto;
     height: auto;
     align-items: center;
-    background-color: rgb(29, 29, 31);
+    background-color: white;
     overflow-y: auto;
     overflow-x: hidden;
     font-family: Helvetica, sans-serif;
-}
-
-ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-li {
-    background-color: #f5f5f7;
-    margin: 5%;
-    padding: 5px;
-    border-radius: 5px;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
 }
 
 @keyframes animateBackground {
@@ -59,7 +36,7 @@ li {
 .title {
     font-size: 150px;
     font-weight: bold;
-    background-image: url('https://thumbnails.production.thenounproject.com/voqWLICBJ3xdPpL8NlJUtbhi2ks=/fit-in/1000x1000/photos.production.thenounproject.com/photos/CEC40731-8C0C-437E-9FC3-CFCF5564E08B.jpg');
+    background-image: url('images/background1.jpeg');
     background-size: cover;
     -webkit-background-clip: text;
     background-clip: text;
@@ -121,7 +98,7 @@ li {
     font-weight: lighter;
     padding: 10px;
     font-size: 25px;
-    color: white;
+    color: #1d1d1f;
 }
 
 .intro {
@@ -130,7 +107,7 @@ li {
     padding-left: 20px;
     padding-right: 20px;
     padding-top: 30px;
-    padding-bottom: 0px;
+    padding-bottom: 30px;
     font-size: 25px;
 }
 
@@ -150,8 +127,7 @@ li {
 }
 
 .container2 {
-    background-color: white;
-    border-radius: 10px;
+    background-color: #f5f5f7;
     padding-left: 15%;
     padding-right: 15%;
     opacity: 0; 
@@ -218,6 +194,7 @@ li {
 }
 
 .start {
+    background-image: url(images/background1.jpeg);
     background-size: cover;
     text-align: center;
     justify-content: center;
@@ -277,7 +254,7 @@ li {
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url('https://thumbnails.production.thenounproject.com/voqWLICBJ3xdPpL8NlJUtbhi2ks=/fit-in/1000x1000/photos.production.thenounproject.com/photos/CEC40731-8C0C-437E-9FC3-CFCF5564E08B.jpg');
+    background-image: url('images/background1.jpeg');
     background-size: cover;
     opacity: 0;
     transition: opacity 0.5s ease;
@@ -319,7 +296,7 @@ li {
     text-justify: distribute-all-lines;
     justify-content: flex-end !important;
     text-align: left !important;
-    color: #262626;
+    color: #86868b;
     line-height: 25px;
 }
 
@@ -354,14 +331,14 @@ li {
 
 /* Initial state of sections */
 section {
-    opacity: 0; /* Initially hide the section */
+    opacity: 0;
     transform: translateY(20px);
-    transition: opacity 0.6s ease-in, transform 0.6s ease-out;
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
 
 /* Class to add when section is visible */
 .is-visible {
-    opacity: 1; /* Show the section */
+    opacity: 1;
     transform: translateY(0px);
 }
 
@@ -459,128 +436,3 @@ input[type=checkbox]:checked + label {
 input[type=checkbox]:disabled + label {
     color: #ccc; /* Gray out the label text to show it's disabled */
 }
-
-    </style>
-
-</head>
-<body>
-    <header class="navibar">
-        <div class="navi">
-          <nav class="hope navbar-expand-md">
-            <div class="row navigation-bars"
-              style="align-items: space-between; vertical-align: middle !important; justify-content: space-between;">
-    
-              <div class="column"
-                style="margin: 0.5%; margin-left: 5%; text-align: center; width: fit-content !important; max-width: unset !important; justify-content: space-between; align-self: left;">
-                <div class="title-nav">Sounding Board</div>
-                <div class="title-nav1" style="font-size: 30px;">|</div>
-                <a class="title-nav1" href="index.html">Home</a>
-                <div class="title-nav1"  href="resumeparser.html">Start interview Prep</div>
-              </div>
-            </div>
-          </nav>
-        </div>
-      </header>
-      <section class="start">
-        <div style="max-width: 800px; margin: 0 auto; padding-top: 5%;">       
-
-            <section class="container2">
-                <div class="intro">
-                    <div >
-                        <h3 class="heading", style="text-align: center !important; align-items: center !important; font-size: 30px !important;">Resume Parsing Results</h3>
-                    </div>
-                </div>
-                <div class="intro">
-                    <div class="row">
-                        <ul class="body-text">
-                            {% for entity in entities %}
-                                <li>{{ entity.label }} - {{ entity.text }}</li>
-                            {% endfor %}
-                        </ul>
-                    </div>
-                </div>
-            </section>
-    
-            <br>
-            <br>
-            <br>
-
-            <div style="display: flex; justify-content: space-around; align-items: center;">
-                <div>
-                    <form action="/interview" method="post">
-                        <button type="submit" class="button start-nowh" id="start"><span>Start Interview</span></button>
-                    </form>
-                </div>
-                <div>
-                    <button type="submit" class="button start-nowh" id="home1"><span>Return Home</span></button>
-                </div>
-            </div>
-            
-    
-
-        </div>
-      </section>
-    
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-    const sections = document.querySelectorAll('section');
-    const fileInput = document.querySelector('input[type="file"][name="resume"]');
-    const resumeCheckbox = document.getElementById('resumeCheckbox');
-    const descriptionCheckbox = document.getElementById('descriptionCheckbox');
-    const startButton = document.querySelector('.button.start-now');
-
-    const checkVisibility = () => {
-        const triggerBottom = window.innerHeight * 0.8;
-
-        sections.forEach(section => {
-            const sectionTop = section.getBoundingClientRect().top;
-
-            if (sectionTop < triggerBottom) {
-                section.classList.add('is-visible');
-            } else {
-                section.classList.remove('is-visible');
-            }
-        });
-    };
-
-    window.addEventListener('scroll', checkVisibility);
-    checkVisibility();
-
-    // Resume upload change event listener
-    fileInput.addEventListener('change', function() {
-        if (fileInput.files.length > 0) {
-            resumeCheckbox.checked = true;
-            checkButtonState();
-        }
-    });
-
-    // Update word count and check description checkbox
-    function updateWordCount() {
-        var textEntered = document.getElementById('resumeText').value;
-        var wordCount = textEntered.split(/\s+/).filter(function(n) { return n != '' }).length;
-        if (wordCount > 500) {
-            var truncatedText = textEntered.split(/\s+/).slice(0, 500).join(' ');
-            document.getElementById('resumeText').value = truncatedText;
-            wordCount = 500;
-        }
-        document.getElementById('wordCount').textContent = wordCount + '/500';
-        descriptionCheckbox.checked = wordCount > 0;
-        // No need to call checkButtonState here unless the button state depends on the job description being filled
-    }
-
-    document.getElementById('resumeText').addEventListener('input', updateWordCount);
-
-    // Check if the start button should be enabled
-    function checkButtonState() {
-        // Button is enabled if resume is uploaded
-        startButton.disabled = !resumeCheckbox.checked;
-    }
-
-    // Initial call to update word count and set initial button state
-    updateWordCount();
-    checkButtonState();
-});
-
-    </script>
-</body>
-</html>

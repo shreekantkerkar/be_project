@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sounding Board</title>
+    
+    <style>
+        body, html {
+        padding: 0;
+        width: auto;
+        height: auto;
+        align-items: center;
+        background-color: rgb(29, 29, 31);
+        overflow-y: auto;
+        overflow-x: hidden;
+        font-family: Helvetica, sans-serif;
+    }
+    
+    @keyframes animateBackground {
+        0%, 100% {
+          background-size: 100% 100%;
+          background-position: center;
+        }
+        50% {
+          background-size: 150% 150%;
+          background-position: top;
+        }
+    }
+    
+    @keyframes fadeInZoom {
+        from {
+            opacity: 0;
+            transform: scale(0.5); 
+            letter-spacing: -15px; 
+        }
+        to {
+            opacity: 1;
+            transform: scale(1); 
+            letter-spacing: normal;
+        }
+    }
+      
+    .title {
+        font-size: 150px;
+        font-weight: bold;
+        background-image: url('https://thumbnails.production.thenounproject.com/voqWLICBJ3xdPpL8NlJUtbhi2ks=/fit-in/1000x1000/photos.production.thenounproject.com/photos/CEC40731-8C0C-437E-9FC3-CFCF5564E08B.jpg');
+        background-size: cover;
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        display: inline;
+        font-family: Helvetica, sans-serif;
+        animation: fadeInZoom 3s ease-out forwards, animateBackground 7s infinite ease-in-out;
+    }
+    
+    .title-nav {
+        font-size: 30px;
+        font-weight: 600;
+        color: white;
+        display: inline;
+        font-family: Helvetica, sans-serif;
+    }
+    
+    .title-nav1 {
+        font-size: 18px;
+        font-weight: 500;
+        text-decoration: none;
+        color: white;
+        display: inline;
+        font-family: Helvetica, sans-serif;
+        padding-left: 50px;
+        transition: transform 0.5s ease-in-out;
+    }
+    
+    .title-nav1:hover {
+        transform: scale(1.05);
+        font-size: 20px;
+    }  
+    
+    @keyframes fadeInContent {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+    
+    .powered-by {
+        width: 100%;
+        text-align: center;
+        font-weight: lighter;
+        margin-top: 20px;
+        padding: 20px;
+        font-size: 30px;
+        color: #1d1d1f;
+        opacity: 0; 
+        animation: fadeInContent 2s ease forwards; 
+        animation-delay: 2s;
+    }
+    
+    .google {
+        width: 100%;
+        text-align: center;
+        font-weight: lighter;
+        padding: 10px;
+        font-size: 25px;
+        color: white;
+    }
+    
+    .intro {
+        width: auto;
+        text-align: center;
+        padding-left: 20px;
+        padding-right: 20px;
+        padding-top: 30px;
+        padding-bottom: 30px;
+        font-size: 25px;
+    }
+    
+    .gemini-image {
+        height: 35px; 
+        width: auto;
+        vertical-align: text-bottom;
+        margin-left: 5px;
+    }
+    
+    .content {
+        text-align: center;
+        align-items: center;
+        align-content: center;
+        width: auto;
+        height: 100%;
+    }
+    
+    .container2 {
+        background-color: #f5f5f7;
+        padding-left: 15%;
+        padding-right: 15%;
+        opacity: 0; 
+        height: 100%;
+    }
+    
+    .row {
+        display: flex;
+        flex-wrap: wrap; /* Allows items to wrap if the space is not enough */
+        align-items: flex-start; /* Aligns items to the start of the cross axis (top) */
+        justify-content: flex-start;
+    }
+    
+    .row-card {
+        display: flex;
+        flex-wrap: wrap; /* Allows items to wrap if the space is not enough */
+        align-items: center; /* Aligns items to the start of the cross axis (top) */
+        justify-content: space-around;
+        padding: 5%;
+        padding-top: 10%;
+        
+    }
+    
+    .row-card1 {
+        display: flex;
+        flex-wrap: wrap; /* Allows items to wrap if the space is not enough */
+        align-items: center; /* Aligns items to the start of the cross axis (top) */
+        justify-content: space-around;
+        padding-left: 10%;
+        padding-right: 10%;
+        padding-top: 10%;
+        
+    }
+    
+    .heading {
+        flex: 1; /* Allows the item to grow */
+        min-width: 100px; /* Minimum width before wrapping, adjust as needed */
+        margin-right: 20px; /* Adds some space between the h3 and the p */
+        align-items: flex-start !important;
+        color: #1d1d1f;
+        text-align: left !important;
+    }
+    
+    .para {
+        flex: 1; /* Allows the item to grow, taking more space than the h3 */
+        font-size: 20px;
+        text-justify: distribute-all-lines;
+        justify-content: flex-start;
+        text-align: left !important;
+        color: #86868b;
+        line-height: 30px;
+    }
+    
+    @media (max-width: 768px) { /* Adjust breakpoint as needed */
+        .row {
+            flex-direction: column;
+        }
+        .heading,
+        .para {
+            min-width: 0; /* Resets min-width for smaller screens */
+            flex: auto; /* Resets flex-grow behavior */
+            margin-right: 0; /* Resets the margin between elements */
+        }
+    }
+    
+    .start {
+        background-size: cover;
+        text-align: center;
+        justify-content: center;
+        padding-bottom: 9%;
+        width: 100vw;
+        height: 100%;
+    }
+    
+    .start-now {
+        display: flex;
+        font-size: 20px;
+        justify-content: center;
+        align-items: center;
+        padding: 15px;
+        height: max-content;
+        color: #1d1d1f;
+        background-color: white;
+        opacity: 1;
+        text-align: left;
+        cursor: pointer;
+        border-radius: 980px;
+        transition: transform 0.5s ease;
+    }
+    
+    .start-now:hover {
+        background-color: #f5f5f7;
+        transform: scale(1.05);
+    }
+    
+    .start-nowh {
+        position: relative;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        padding: 15px;
+        height: max-content;
+        color: #1d1d1f;
+        background-color: white;
+        cursor: pointer;
+        border-radius: 980px;
+        overflow: hidden;
+        font-size: 20px;
+        border: 2px solid #1d1d1f;
+        transition: color 0.5s ease, transform 0.5s ease;
+        animation: fadeInContent 5s ease forwards !important; 
+    }
+    
+    .start-nowh span {
+        position: relative;
+        z-index: 2; /* Ensure text stays on top */
+    }
+    
+    .start-nowh::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url('https://thumbnails.production.thenounproject.com/voqWLICBJ3xdPpL8NlJUtbhi2ks=/fit-in/1000x1000/photos.production.thenounproject.com/photos/CEC40731-8C0C-437E-9FC3-CFCF5564E08B.jpg');
+        background-size: cover;
+        opacity: 0;
+        transition: opacity 0.5s ease;
+        z-index: 1; /* Ensure this is below the text */
+    }
+    
+    .start-nowh:hover::before {
+        opacity: 1;
+    }
+    
+    .start-nowh:hover span {
+        color: rgb(0, 0, 0); /* Change text color to white on hover */
+    }
+    
+    .start-nowh:hover {
+        transform: scale(1.05);
+    }
+    
+    .bclass {
+        
+        justify-self: center;
+        justify-content: center;
+        display: flex;
+        margin-top: 7%;
+    }
+    
+    .bclassh {
+        width: 100vw;
+        justify-self: center;
+        justify-content: center;
+        display: flex;
+        padding-top: 5%;
+        padding-bottom: 7%;
+    }
+    
+    .body-text {
+        flex: 1; /* Allows the item to grow, taking more space than the h3 */
+        font-size: 17px;
+        text-justify: distribute-all-lines;
+        justify-content: flex-end !important;
+        text-align: left !important;
+        color: #86868b;
+        line-height: 25px;
+    }
+    
+    .card {
+        width: 27%;
+        height: 70vh;
+        background: rgb(255, 255, 255);
+        position: relative;
+        border-radius: 10px;
+        transition: transform 0.5s ease;
+    }
+    
+    .card1 {
+        width: 35%;
+        height: 40vh;
+        background: rgb(255, 255, 255);
+        position: relative;
+        border-radius: 10px;
+    }
+    
+    .card:hover {
+        transform: scale(1.05); /* Scales up the card by 5% */
+    }
+    
+    .cont {
+        margin: 15%;
+    }
+    
+    .head {
+        padding-top: 14%;
+    }
+    
+    /* Initial state of sections */
+    section {
+    opacity: 0; /* Initially hide the section */
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-in, transform 0.6s ease-out;
+}
+
+/* Class to add when section is visible */
+.is-visible {
+    opacity: 1; /* Show the section */
+    transform: translateY(0px);
+}
+    
+    .navi {
+        background-color: rgba(107, 107, 107, 0.134);
+        position: fixed;
+        width: 100%;
+        top: 0;
+        left: 0;
+        padding: 7px;
+        backdrop-filter: blur(10px);
+        z-index: 1;
+      }
+      
+      .navibar::after {
+        content: "";
+        display: table;
+        clear: both;
+      }
+      
+      .hope ul {
+        margin-top: 0;
+        padding-left: 5%;
+        list-style: none;
+        text-align: left;
+      }
+      
+      .hope li {
+        display: inline-block;
+        margin-left: 35px;
+        margin-right: 35px;
+      }
+      
+      .hope li a {
+        color: rgb(255, 255, 255);
+        text-decoration: none;
+        font-size: 17px;
+        font-family: Glorify;
+        transition: 0.3s;
+      }
+      
+      .hope li a:hover {
+        color: rgb(255, 255, 255);
+        font-size: larger;
+        padding: auto;
+        text-decoration: none;
+      }
+      
+      .dropdown-item:hover {
+        color: rgb(0, 0, 0);
+        font-size: larger;
+        padding: auto;
+        text-decoration: none;
+      }
+      
+      .hope a .o {
+        margin-bottom: 0px;
+      }
+      
+      .hope ul .pls {
+        padding-left: 300px;
+      }
+      
+      .hope ul .plss {
+        padding-right: 350px;
+      }
+      
+      @media screen and (min-width: 767px) {
+        .navbar-toggler {
+          margin: 0px !important;
+        }
+      }
+      
+      /* @media screen and (max-width: 1345px) {
+        .navbar-collapse{
+          display: none !important;
+        }
+      }  */
+      
+      ul.dropdown-menu.show {
+        background-color: #262626;
+        text-decoration: none;
+      }
+    
+    textarea {
+        width: 100%; /* Adjust width to fit the form or container */
+        height: 150px; /* Adjust height as needed */
+        padding: 10px;
+        box-sizing: border-box;
+    }
+    
+    input[type=checkbox]:checked + label {
+        color: green;
+    }
+    input[type=checkbox]:disabled + label {
+        color: #ccc; /* Gray out the label text to show it's disabled */
+    }
+    
+        </style>
+</head>
+<body>
+    <header class="navibar">
+        <div class="navi">
+          <nav class="hope navbar-expand-md">
+            <div class="row navigation-bars"
+              style="align-items: space-between; vertical-align: middle !important; justify-content: space-between;">
+    
+              <div class="column"
+                style="margin: 0.5%; margin-left: 5%; text-align: center; width: fit-content !important; max-width: unset !important; justify-content: space-between; align-self: left;">
+                <div class="title-nav">Sounding Board</div>
+                <div class="title-nav1" style="font-size: 30px;">|</div>
+                <a class="title-nav1" href="index.html">Home</a>
+                <div class="title-nav1"  href="resumeparser.html">Start interview Prep</div>
+              </div>
+            </div>
+          </nav>
+        </div>
+      </header>
+
+      <section class="start">
+        <form action="/parse_resume_and_jobdesc" method="post" enctype="multipart/form-data">
+            <div class="row-card1">
+                <div class="card1">
+                    <div class="cont">
+                        <h5 class="header" style="font-size: 25px; color: #1d1d1f;">Upload Resume <span style="font-size: 15px;">(.pdf)</span></h5>
+                        <input type="file" name="resume" accept=".pdf, .word" style="font-size: medium; padding-left: 10px;">
+                        <div style="height: 150px; padding-top: 30px;">
+                            <input type="checkbox" id="resumeCheckbox" disabled>
+                            <label for="resumeCheckbox">Resume Uploaded</label>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="card1">
+                    <div class="cont">
+                        <h5 class="header" style="font-size: 25px; color: #1d1d1f;">Upload Job Description <span style="font-size: 15px;">(.docx)</span></h5>
+                        <input type="file" name="job_description" id="job_description" accept=".docx" style="font-size: medium; padding-left: 10px;">
+                        <div style="height: 150px; padding-top: 30px;">
+                            <input type="checkbox" id="jdCheckbox" disabled>
+                            <label for="jdCheckbox">Job Description Uploaded</label>
+                        </div>                 
+                    </div>
+                </div>
+            </div>
+    
+            <div class="bclass" style="margin-top: 5%;">
+                <button class="button start-now" disabled>Start Interview</button>
+            </div>
+        </form>
+    </section>
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+    const sections = document.querySelectorAll('section');
+    const fileInput = document.querySelector('input[type="file"][name="resume"]');
+    const resumeCheckbox = document.getElementById('resumeCheckbox');
+    const descriptionCheckbox = document.getElementById('descriptionCheckbox');
+    const startButton = document.querySelector('.button.start-now');
+
+    const checkVisibility = () => {
+        const triggerBottom = window.innerHeight * 0.8;
+
+        sections.forEach(section => {
+            const sectionTop = section.getBoundingClientRect().top;
+
+            if (sectionTop < triggerBottom) {
+                section.classList.add('is-visible');
+            } else {
+                section.classList.remove('is-visible');
+            }
+        });
+    };
+
+    window.addEventListener('scroll', checkVisibility);
+    checkVisibility();
+
+    // Resume upload change event listener
+    fileInput.addEventListener('change', function() {
+        if (fileInput.files.length > 0) {
+            resumeCheckbox.checked = true;
+            checkButtonState();
+        }
+    });
+
+    // Update word count and check description checkbox
+    function updateWordCount() {
+        var textEntered = document.getElementById('resumeText').value;
+        var wordCount = textEntered.split(/\s+/).filter(function(n) { return n != '' }).length;
+        if (wordCount > 500) {
+            var truncatedText = textEntered.split(/\s+/).slice(0, 500).join(' ');
+            document.getElementById('resumeText').value = truncatedText;
+            wordCount = 500;
+        }
+        document.getElementById('wordCount').textContent = wordCount + '/500';
+        descriptionCheckbox.checked = wordCount > 0;
+        // No need to call checkButtonState here unless the button state depends on the job description being filled
+    }
+
+    document.getElementById('resumeText').addEventListener('input', updateWordCount);
+
+    // Check if the start button should be enabled
+    function checkButtonState() {
+        // Button is enabled if resume is uploaded
+        startButton.disabled = !resumeCheckbox.checked;
+    }
+
+    // Initial call to update word count and set initial button state
+    updateWordCount();
+    checkButtonState();
+});
+
+    </script>
+
+    
+</body>
+</html>
