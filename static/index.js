@@ -250,21 +250,113 @@ function drawBoxes(objects) {
   });
 }
 
+
+
+// function updateQuestion() {
+//   var xhr = new XMLHttpRequest();
+//   xhr.open('GET', '/updatequestion', true);
+
+//   xhr.onload = function () {
+//     if (this.status == 200) {
+//       var question = JSON.parse(this.response);
+//       document.getElementById('question').innerHTML = question;
+//       qcount++;
+//       // document.getElementById('question').innerHTML = question.text;
+//     }
+//   };
+
+//   xhr.send();
+// }
+
+// setInterval(updateQuestion, 5000);
 var qcount = 1;
-function updateQuestion() {
-  var xhr = new XMLHttpRequest();
-  xhr.open('GET', '/updatequestion', true);
+var timerInterval = null;
+var remainingTime = 30; // 30 seconds
+var firstQuestionDisplayed = false;
 
-  xhr.onload = function () {
-    if (this.status == 200) {
-      var question = JSON.parse(this.response);
-      document.getElementById('question').innerHTML = question;
-      qcount++;
-      // document.getElementById('question').innerHTML = question.text;
+function startTimer() {
+    remainingTime = 30;
+    var timerElement = document.getElementById('timer');
+    timerElement.innerText = `Time left: ${remainingTime}s`;
+
+    if (timerInterval) {
+        clearInterval(timerInterval);
     }
-  };
 
-  xhr.send();
+    timerInterval = setInterval(() => {
+        remainingTime--;
+        timerElement.innerText = `Time left: ${remainingTime}s`;
+        
+        if (remainingTime <= 0) {
+            clearInterval(timerInterval);
+            timerElement.innerText = "Time for answering the question is up. Now processing the answer...";
+            // You can also add any additional logic here if needed when the time is up.
+        }
+    }, 1000);
 }
 
+function stopTimer() {
+    if (timerInterval) {
+        clearInterval(timerInterval);
+    }
+}
+
+function updateQuestion() {
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', '/updatequestion', true);
+
+    xhr.onload = function () {
+        if (this.status == 200) {
+            var question = JSON.parse(this.response);
+            var questionElement = document.getElementById('question');
+            var timerElement = document.getElementById('timer');
+
+            if (questionElement.innerHTML !== question) {
+                questionElement.innerHTML = question;
+
+                if (question !== "Question will be displayed here") {
+                    if (!firstQuestionDisplayed) {
+                        firstQuestionDisplayed = true;
+                    }
+
+                    if (firstQuestionDisplayed) {
+                        timerElement.style.display = 'block'; // Show the timer
+                        startTimer(); // Restart the timer whenever a new question is displayed
+                    }
+                    qcount++;
+                } else {
+                    timerElement.style.display = 'none'; // Hide the timer
+                }
+            }
+        }
+    };
+
+    xhr.send();
+}
+
+// Call updateQuestion every 5 seconds to fetch the latest question
 setInterval(updateQuestion, 5000);
+
+document.onreadystatechange = () => {
+    if (document.readyState === 'complete') {
+        String.prototype.capitalize = function () {
+            return this.charAt(0).toUpperCase() + this.slice(1);
+        };
+
+        video = document.querySelector('#videoElement');
+
+        captureCanvas = document.getElementById('captureCanvas');
+        captureCtx = captureCanvas.getContext('2d');
+
+        drawCanvas = document.getElementById('drawCanvas');
+        drawCtx = drawCanvas.getContext('2d');
+
+        // Initialize timer display
+        var timerDisplay = document.createElement('div');
+        timerDisplay.id = 'timer';
+        timerDisplay.style.fontSize = '20px';
+        timerDisplay.style.color = 'red';
+        timerDisplay.style.display = 'none'; // Initially hide the timer
+        document.body.appendChild(timerDisplay);
+    }
+};

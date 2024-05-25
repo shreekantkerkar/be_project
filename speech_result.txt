@@ -1,1 +1,1 @@
-different types of operating systems are batch operating system schedulers are basically used for scheduling processes and allocating resources share resources and locks and advantages of them is using schedulers and operating system helps us to
+standard JS is a library which is provided by on Javascript it is used for creating interactive charts like pie chart bar chart histogram for visualisation of the data and also it helps to get a more clear inside about the patterns of the data by viewing the graph

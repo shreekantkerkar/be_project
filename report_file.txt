@@ -1184,3 +1184,16 @@ this was the first question this was my answer
 6
 confidence: 50.0%	 nervousness: 0.0%	 neutral: 100.0%
 
+11    What is a process and process table?
+Number of change Tabs =0
+
+9    What is the purpose of Chart.js?
+standard JS is a library which is provided by on Javascript it is used for creating interactive charts like pie chart bar chart histogram for visualisation of the data and also it helps to get a more clear inside about the patterns of the data by viewing the graph
+82
+confidence: 46.39%	 nervousness: 9.28%	 neutral: 88.66%
+
+Next question:
+
+Since you mentioned that Chart.js provides interactive charts, can you elaborate on how these charts can be interacted with by users? Are there any specific features or capabilities that allow for user interaction?
+Number of change Tabs =0
+
