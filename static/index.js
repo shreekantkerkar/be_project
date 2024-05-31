@@ -321,7 +321,8 @@ function updateQuestion() {
 
                     if (firstQuestionDisplayed) {
                         timerElement.style.display = 'block'; // Show the timer
-                        startTimer(); // Restart the timer whenever a new question is displayed
+                        setTimeout(startTimer, 5000);
+                        // startTimer(); // Restart the timer whenever a new question is displayed
                     }
                     qcount++;
                 } else {

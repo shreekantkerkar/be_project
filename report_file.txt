@@ -1197,3 +1197,121 @@ Next question:
 Since you mentioned that Chart.js provides interactive charts, can you elaborate on how these charts can be interacted with by users? Are there any specific features or capabilities that allow for user interaction?
 Number of change Tabs =0
 
+2    How would you design a database for a specific application?
+Number of change Tabs =0
+
+6    Implement a queue using an array and demonstrate how to enqueue and dequeue elements.
+so Q can be used implemented using an array if the only constraint is that both the end of the cube should be open one and should be used for NQ in that is to push element into the cube while other end should be used to decorate this pop element of two elements out of the cube this is how we could implement you using an array
+12
+confidence: 50.0%	 nervousness: 0.0%	 neutral: 100.0%
+
+8    Explain the difference between a one-dimensional and two-dimensional array, and provide examples of their use cases.
+one row of elements can be included but in two dimensions are there are two or more than two dimensions which can be included for example and SQL is a two dimensional array in while just a normal array with some left for example number of numbers randomly and is an example
+54
+confidence: 51.8%	 nervousness: 1.8%	 neutral: 92.79%
+
+Based on your answer, could you further elaborate on the key differences between using multi-dimensional arrays (such as two-dimensional arrays) compared to one-dimensional arrays in programming? In particular, what are the advantages and disadvantages of each type, and how might they impact the design and performance of an application?
+Number of change Tabs =0
+
+6    Implement a queue data structure using an array and demonstrate its operations.
+data structure which follows the first in first out rule and it has several operations like NQ BQ and q is used for pushing the element into the array for the queue and DQ is used for removing the element so it perform first in first out of the first element which we insert is the first one to come out of that there are several applications like lift in lift we use the queue and also in a line of
+36
+confidence: 35.77%	 nervousness: 29.23%	 neutral: 70.0%
+
+16    Describe the architecture and functionality of Node.js for building web applications.
+node JS is used as a backend in web application it it is used for implementing server features like middleware then it also provides the functionality Positive Thinking the JSON web token for authentication and authorisation of the user then it is used for building and making a loosely coupled applications which we would be employing for making an application which which is independent of the Other components
+65
+confidence: 45.67%	 nervousness: 8.66%	 neutral: 91.34%
+
+Based on your description of Node.js's architecture and functionality, can you provide specific examples of how it has been used to create loosely coupled, backend-driven web applications?
+Number of change Tabs =0
+
+1    Describe the push and pop operations in a stack data structure.
+18    Describe the concept of normalization in database design. What are the different levels of normalization?
+Number of change Tabs =0
+
+18    What is the difference between a virtual machine and a container?
+Virtual Machine what is the difference between virtual machine and content
+63
+confidence: 49.33%	 nervousness: 9.33%	 neutral: 82.67%
+
+"Virtual Machine" is a broad term that can refer to various virtualization technologies. Can you elaborate on what specific type of virtual machine you are referring to and how it differs from a container in terms of resource allocation, isolation, and performance characteristics?"
+Number of change Tabs =0
+
+11    Discuss the differences between HTML, CSS, and JavaScript.
+Number of change Tabs =3
+
+11    Discuss the differences between HTML, CSS, and JavaScript.
+HTML is a structuring language which is used to define the structure of the top CSS styling script which we can use to style objects and elements in the CSS file JavaScript is used to make the page responsive and reactive this is the basic difference between HTML CSS and JavaScript although all three languages are used as a front end languages to develop and design web pages
+69
+confidence: 45.21%	 nervousness: 9.59%	 neutral: 90.41%
+
+Could you provide an example of how HTML, CSS, and JavaScript work together to create a dynamic and interactive web page?
+to include forms to include buttons to include text this is what HTML code for example the point the colour the background while JavaScript are reactive and responsibility
+51
+confidence: 30.77%	 nervousness: 38.46%	 neutral: 61.54%
+
+Based on your previous answer, can you elaborate on the specific interactions between HTML, CSS, and JavaScript that enable dynamic and interactive web elements? Explain how these technologies collaborate to handle user input and modify the page's visual elements accordingly.
+Number of change Tabs =1
+
+13    Explain the difference between HTML and CSS and how they are used together to design and style web pages.
+HTML is used for defining the structure of the web page it contains various tasks so that we can structure at web page on the other hand CSS is just for creating some visual its about increasing the visual effect of that particular the page it contains various elements selected students and different colours that we can put into that box it's used
+74
+confidence: 57.07%	 nervousness: 8.08%	 neutral: 69.7%
+
+Follow-up question:
+
+Can you provide a concrete example of how HTML and CSS work together to create a visual layout for a web page? Describe how the HTML structure defines the content and how CSS is applied to enhance its visual presentation.
+female tag that is so we can write the parallel to it and we can use the CSS to the SS for enhancing the which will by adding the paragraph box for girls
+34
+confidence: 43.51%	 nervousness: 18.18%	 neutral: 76.62%
+
+3    Write an SQL query to retrieve all customers who placed an order in the last 30 days.
+Number of change Tabs =0
+
+2    What is the purpose of a SQL JOIN statement?
+left right
+-7
+confidence: 30.0%	 nervousness: 55.0%	 neutral: 30.0%
+
+13    Describe the difference between MySQL and Oracle DB.
+what is the use of
+14
+confidence: 37.5%	 nervousness: 36.36%	 neutral: 52.27%
+
+10    What is the purpose of a REST API?
+Number of change Tabs =0
+
+16    Describe the features and benefits of using Bootstrap for frontend development.
+open source Framework which is used for importing inbuilt function components like number footer card so it is the work of the front end developer as it provides a modular components which can be integrated independently it is a lightweight frame and it is very easy to embed in our code
+43
+confidence: 49.11%	 nervousness: 3.57%	 neutral: 94.64%
+
+5    Explain the concept of virtual memory in an operating system.
+Number of change Tabs =0
+
+interprocess communication for WhatsApp memory is a special memory allocated from the main memory which every process contributes their address space to and using this address space a shared memory space for message passing of interprocess communication so processes use this memory and others in Radiant
+17    Describe the role of Express Js in Nodejs application development.
+so expression is a framework of this node JS library which is used for implementing the server we write the rest API over there it can handle multiple API request we can also write concurrent applications and it's also support API in the web applications
+57
+confidence: 55.15%	 nervousness: 2.06%	 neutral: 85.57%
+
+Based on the candidate's answer, you could ask the following question:
+
+"Can you provide an example of how you have used Express.js to handle multiple API requests concurrently in a real-world application?"
+flaming an application that uses multiple Threads for processing different request from different clients so this is one thing that node JS Express JS providers
+67
+confidence: 50.0%	 nervousness: 3.33%	 neutral: 93.33%
+
+"In the application you mentioned, how did you ensure that each thread was handling requests in a performant and reliable manner, especially during periods of high concurrency?"
+event loop that is actually processing this all the threats and it ensures that the application remain consistent
+33
+confidence: 46.53%	 nervousness: 6.94%	 neutral: 93.06%
+
+18    Explain the features and advantages of Bootstrap in web development.
+Number of change Tabs =0
+
+for now we have five questions they ask this is the answer he gave this is the expected answer ok and then it is the similarity between the expected answer and 579 application was asking
+-2
+confidence: 50.0%	 nervousness: 0.0%	 neutral: 100.0%
+

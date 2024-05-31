@@ -1,1 +1,1 @@
-standard JS is a library which is provided by on Javascript it is used for creating interactive charts like pie chart bar chart histogram for visualisation of the data and also it helps to get a more clear inside about the patterns of the data by viewing the graph
+so expression is a framework of this node JS library which is used for implementing the server we write the rest API over there it can handle multiple API request we can also write concurrent applications and it's also support API in the web applications

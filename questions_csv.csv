@@ -1,24 +1,21 @@
 Question Number,Question
-0,Explain the difference between a stack and a queue.
-1,What is the purpose of a database management system?
-2,How would you design a database for a specific application?
-3,What are the advantages of using SQL over other query languages?
-4,What are the key components of a computer network?
-5,How do you ensure the security of a computer network?
-6,What is the difference between a process and a thread?
-7,What are the advantages of using an operating system?
-8,How would you implement a tree data structure?
-9,What is the difference between an array and a linked list?
-10,What are the best practices for designing a programming system?
-11,What are the advantages of using Springboot for web development?
-12,How would you implement a JSP page?
-13,How would you create a dynamic chart using Chart.js?
-14,What are the key features of Oracle DB?
-15,How would you create an HTML form?
-16,What are the differences between CSS selectors?
-17,How would you create a React application?
-18,What are the advantages of using Node.js for server-side development?
-19,How would you create an API using Express.js?
-20,What are the key features of Bootstrap?
-21,How would you use Postman to test an API?
-22,What are the benefits of using Github for version control?
+0,Explain the principles of object-oriented programming.
+1,Describe the concept of a stack in data structures.
+2,What is database management and how does it relate to SQL?
+3,Explain the different components of a computer network.
+4,Discuss the challenges and benefits of managing operating systems.
+5,What is a queue in data structures and how does it differ from a stack?
+6,What are binary trees and how are they used in computer science?
+7,Explain the difference between an array and a linked list.
+8,What are programming systems and how do they facilitate software development?
+9,Describe the advantages of using Springboot in web development.
+10,What is JSP and how is it used in dynamic web pages?
+11,How can Chart.js be utilized for data visualization?
+12,Explain the architecture and purpose of Oracle DB.
+13,Discuss the importance of HTML and CSS in web development.
+14,What is React Js and how does it compare to other JavaScript frameworks?
+15,Explain the role of Nodejs and Express Js in modern web development.
+16,How can Bootstrap be used to enhance the user experience of web applications?
+17,Discuss the functionality and benefits of using Postman for API testing.
+18,Describe the advantages of using Github for version control and collaboration.
+19,Explain the concept of MySQL and its role in database management.

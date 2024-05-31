@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,7 +12,7 @@
     width: auto;
     height: auto;
     align-items: center;
-    background-color: rgb(29, 29, 31);
+    background-color: whitesmoke;
     overflow-y: auto;
     overflow-x: hidden;
     font-family: Helvetica, sans-serif;
@@ -25,11 +24,11 @@ ul {
 }
 
 li {
-    background-color: #f5f5f7;
-    margin: 5%;
+    background-color: #f0f0f0;
+    margin: 3.5%;
     padding: 5px;
     border-radius: 5px;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.1);
 }
 
 @keyframes animateBackground {
@@ -129,7 +128,7 @@ li {
     text-align: center;
     padding-left: 20px;
     padding-right: 20px;
-    padding-top: 30px;
+    padding-top: 20px;
     padding-bottom: 0px;
     font-size: 25px;
 }
@@ -156,6 +155,7 @@ li {
     padding-right: 15%;
     opacity: 0; 
     height: 100%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.1);
 }
 
 .row {
@@ -171,7 +171,6 @@ li {
     align-items: center; /* Aligns items to the start of the cross axis (top) */
     justify-content: space-around;
     padding: 5%;
-    padding-top: 10%;
     
 }
 
@@ -189,7 +188,6 @@ li {
 .heading {
     flex: 1; /* Allows the item to grow */
     min-width: 100px; /* Minimum width before wrapping, adjust as needed */
-    margin-right: 20px; /* Adds some space between the h3 and the p */
     align-items: flex-start !important;
     color: #1d1d1f;
     text-align: left !important;
@@ -221,7 +219,8 @@ li {
     background-size: cover;
     text-align: center;
     justify-content: center;
-    padding-bottom: 9%;
+    padding-top: 1%;
+    padding-bottom: 5%;
     width: 100vw;
     height: 100%;
 }
@@ -321,6 +320,7 @@ li {
     text-align: left !important;
     color: #262626;
     line-height: 25px;
+    padding-bottom: 30px;
 }
 
 .card {
@@ -366,15 +366,22 @@ section {
 }
 
 .navi {
-    background-color: rgba(107, 107, 107, 0.134);
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.134), whitesmoke),
+                url('https://i.ibb.co/nRd68BB/background4.jpg');
+    background-size: cover;
+    background-position: center;
     position: fixed;
     width: 100%;
     top: 0;
     left: 0;
     padding: 7px;
+    padding-bottom: 18px !important;
+    color: white; /* Ensure the text color is visible against the background image */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8); /* Add text shadow for better readability */
+    border-bottom: none; /* Ensure no border is present */
     backdrop-filter: blur(10px);
     z-index: 1;
-  }
+}
   
   .navibar::after {
     content: "";
@@ -474,20 +481,21 @@ input[type=checkbox]:disabled + label {
                 style="margin: 0.5%; margin-left: 5%; text-align: center; width: fit-content !important; max-width: unset !important; justify-content: space-between; align-self: left;">
                 <div class="title-nav">Sounding Board</div>
                 <div class="title-nav1" style="font-size: 30px;">|</div>
-                <a class="title-nav1" href="index.html">Home</a>
-                <div class="title-nav1"  href="resumeparser.html">Start interview Prep</div>
+                <a class="title-nav1" href="./index.html">Home</a>
+                <div class="title-nav1"  href="./resumeparser.html">Start interview Prep</div>
               </div>
             </div>
           </nav>
         </div>
       </header>
+      
       <section class="start">
         <div style="max-width: 800px; margin: 0 auto; padding-top: 5%;">       
 
             <section class="container2">
                 <div class="intro">
                     <div >
-                        <h3 class="heading", style="text-align: center !important; align-items: center !important; font-size: 30px !important;">Resume Parsing Results</h3>
+                        <h3 class="heading", style="text-align: center !important;align-items: center !important;font-size: 30px !important;margin-bottom: 0px;">Resume Parsing Results</h3>
                     </div>
                 </div>
                 <div class="intro">
@@ -546,39 +554,7 @@ input[type=checkbox]:disabled + label {
     window.addEventListener('scroll', checkVisibility);
     checkVisibility();
 
-    // Resume upload change event listener
-    fileInput.addEventListener('change', function() {
-        if (fileInput.files.length > 0) {
-            resumeCheckbox.checked = true;
-            checkButtonState();
-        }
-    });
-
-    // Update word count and check description checkbox
-    function updateWordCount() {
-        var textEntered = document.getElementById('resumeText').value;
-        var wordCount = textEntered.split(/\s+/).filter(function(n) { return n != '' }).length;
-        if (wordCount > 500) {
-            var truncatedText = textEntered.split(/\s+/).slice(0, 500).join(' ');
-            document.getElementById('resumeText').value = truncatedText;
-            wordCount = 500;
-        }
-        document.getElementById('wordCount').textContent = wordCount + '/500';
-        descriptionCheckbox.checked = wordCount > 0;
-        // No need to call checkButtonState here unless the button state depends on the job description being filled
-    }
-
-    document.getElementById('resumeText').addEventListener('input', updateWordCount);
-
-    // Check if the start button should be enabled
-    function checkButtonState() {
-        // Button is enabled if resume is uploaded
-        startButton.disabled = !resumeCheckbox.checked;
-    }
-
-    // Initial call to update word count and set initial button state
-    updateWordCount();
-    checkButtonState();
+    
 });
 
     </script>

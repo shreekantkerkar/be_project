@@ -11,7 +11,7 @@
         width: auto;
         height: auto;
         align-items: center;
-        background-color: rgb(29, 29, 31);
+        background-color: whitesmoke;
         overflow-y: auto;
         overflow-x: hidden;
         font-family: Helvetica, sans-serif;
@@ -322,6 +322,7 @@
         background: rgb(255, 255, 255);
         position: relative;
         border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1),0 6px 20px rgba(0,0,0,0.1);
     }
     
     .card:hover {
@@ -349,16 +350,23 @@
     transform: translateY(0px);
 }
     
-    .navi {
-        background-color: rgba(107, 107, 107, 0.134);
-        position: fixed;
-        width: 100%;
-        top: 0;
-        left: 0;
-        padding: 7px;
-        backdrop-filter: blur(10px);
-        z-index: 1;
-      }
+.navi {
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.134), whitesmoke),
+                url('https://i.ibb.co/nRd68BB/background4.jpg');
+    background-size: cover;
+    background-position: center;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    padding: 7px;
+    padding-bottom: 18px !important;
+    color: white; /* Ensure the text color is visible against the background image */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8); /* Add text shadow for better readability */
+    border-bottom: none; /* Ensure no border is present */
+    backdrop-filter: blur(10px);
+    z-index: 1;
+}
       
       .navibar::after {
         content: "";
@@ -457,8 +465,8 @@
                 style="margin: 0.5%; margin-left: 5%; text-align: center; width: fit-content !important; max-width: unset !important; justify-content: space-between; align-self: left;">
                 <div class="title-nav">Sounding Board</div>
                 <div class="title-nav1" style="font-size: 30px;">|</div>
-                <a class="title-nav1" href="index.html">Home</a>
-                <div class="title-nav1"  href="resumeparser.html">Start interview Prep</div>
+                <a class="title-nav1" href="/">Home</a>
+                <div class="title-nav1"  href="./resumeparser.html">Start interview Prep</div>
               </div>
             </div>
           </nav>
@@ -492,7 +500,7 @@
             </div>
     
             <div class="bclass" style="margin-top: 5%;">
-                <button class="button start-now" disabled>Start Interview</button>
+                <button class="button start-now">Start Interview</button>
             </div>
         </form>
     </section>
@@ -531,22 +539,7 @@
         }
     });
 
-    // Update word count and check description checkbox
-    function updateWordCount() {
-        var textEntered = document.getElementById('resumeText').value;
-        var wordCount = textEntered.split(/\s+/).filter(function(n) { return n != '' }).length;
-        if (wordCount > 500) {
-            var truncatedText = textEntered.split(/\s+/).slice(0, 500).join(' ');
-            document.getElementById('resumeText').value = truncatedText;
-            wordCount = 500;
-        }
-        document.getElementById('wordCount').textContent = wordCount + '/500';
-        descriptionCheckbox.checked = wordCount > 0;
-        // No need to call checkButtonState here unless the button state depends on the job description being filled
-    }
-
-    document.getElementById('resumeText').addEventListener('input', updateWordCount);
-
+   
     // Check if the start button should be enabled
     function checkButtonState() {
         // Button is enabled if resume is uploaded
@@ -554,7 +547,7 @@
     }
 
     // Initial call to update word count and set initial button state
-    updateWordCount();
+   
     checkButtonState();
 });
 

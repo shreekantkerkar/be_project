@@ -3,37 +3,169 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Flask App</title>
-
+    <title>Sounding Board</title>
+    
     <style>
-        body {
-            font-family: Arial, sans-serif;
+    .title {
+        font-size: 150px;
+        font-weight: bold;
+        background-image: url('https://thumbnails.production.thenounproject.com/voqWLICBJ3xdPpL8NlJUtbhi2ks=/fit-in/1000x1000/photos.production.thenounproject.com/photos/CEC40731-8C0C-437E-9FC3-CFCF5564E08B.jpg');
+        background-size: cover;
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        display: inline;
+        font-family: Helvetica, sans-serif;
+        animation: fadeInZoom 3s ease-out forwards, animateBackground 7s infinite ease-in-out;
+    }
+    
+    .title-nav {
+        font-size: 30px;
+        font-weight: 600;
+        color: white;
+        display: inline;
+        font-family: Helvetica, sans-serif;
+    }
+    
+    .title-nav1 {
+        font-size: 18px;
+        font-weight: 500;
+        text-decoration: none;
+        color: white;
+        display: inline;
+        font-family: Helvetica, sans-serif;
+        padding-left: 50px;
+        transition: transform 0.5s ease-in-out;
+    }
+    
+    .title-nav1:hover {
+        transform: scale(1.05);
+        font-size: 20px;
+    }  
+    
+    @keyframes fadeInContent {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+
+    
+.navi {
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.134), whitesmoke),
+                url('https://i.ibb.co/nRd68BB/background4.jpg');
+    background-size: cover;
+    background-position: center;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    padding: 7px;
+    padding-bottom: 18px !important;
+    color: white; /* Ensure the text color is visible against the background image */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8); /* Add text shadow for better readability */
+    border-bottom: none; /* Ensure no border is present */
+    backdrop-filter: blur(10px);
+    z-index: 1;
+}
+
+.navibar::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.hope ul {
+    margin-top: 0;
+    padding-left: 5%;
+    list-style: none;
+    text-align: left;
+}
+
+.hope li {
+    display: inline-block;
+    margin-left: 35px;
+    margin-right: 35px;
+    transition: transform 0.3s ease-in-out; /* Add smooth transition */
+}
+
+.hope li a {
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    font-size: 17px;
+    font-family: Glorify;
+    transition: 1s !important;
+}
+
+/* Smooth expand effect */
+.hope li:hover {
+    transform: scale(1.1); /* Scale up on hover */
+}
+
+/* Smooth compress effect */
+.hope li:not(:hover) {
+    transform: scale(1); /* Reset to normal size when not hovered */
+}
+
+.hope li a:hover {
+    color: rgb(255, 255, 255);
+    font-size: larger;
+    padding: auto;
+    text-decoration: none;
+}
+
+.dropdown-item:hover {
+    color: rgb(0, 0, 0);
+    font-size: larger;
+    padding: auto;
+    text-decoration: none;
+}
+
+.hope a .o {
+    margin-bottom: 0px;
+}
+
+.hope ul .pls {
+    padding-left: 300px;
+}
+
+.hope ul .plss {
+    padding-right: 350px;
+}
+
+@media screen and (min-width: 767px) {
+    .navbar-toggler {
+        margin: 0px !important;
+    }
+}
+
+ul.dropdown-menu.show {
+    background-color: #262626;
+    text-decoration: none;
+}
+    
+    body {
+        font-family: Helvetica, sans-serif !important;
             background-color: #f4f4f4;
             margin: 0;
             padding: 0;
-        }
-
-        h1 {
-            color: #333;
         }
 
         table {
             width: 80%;
             margin: 20px auto;
             border-collapse: collapse;
+            border-radius: 10px !important;
             background-color: #fff;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3), 0 6px 20px rgba(0, 0, 0, 0.3);
         }
 
         th, td {
             padding: 15px;
             text-align: left;
             border-bottom: 1px solid #ddd;
-        }
-
-        th {
-            background-color: #4CAF50;
-            color: white;
         }
 
         tr:hover {
@@ -46,7 +178,8 @@
         }
 
         .interview-finished h1 {
-            color: #4CAF50;
+            margin-top: 5%;
+            color: #1d1d1f;
         }
 
         .interview-score {
@@ -54,10 +187,44 @@
             margin-top: 20px;
             font-size: 18px;
         }
-    </style>
+
+        /* Apply the background image to the header row */
+table tr:first-child {
+    background-image: url('https://i.ibb.co/nRd68BB/background4.jpg');  
+    background-size: cover; /* Ensure the image covers the entire header row */
+  background-repeat: no-repeat; /* Prevent the image from repeating */
+  color: white; /* Ensure text is readable */
+}
+
+/* Style individual header cells to make sure the text is aligned properly */
+table th {
+  padding: 10px; /* Adjust padding as needed */
+  text-align: left; /* Adjust text alignment as needed */
+  color: white; /* Ensure the text color matches the background */
+}
+
+        </style>
 </head>
 <body>
-  <br>
+    <header class="navibar">
+        <div class="navi">
+          <nav class="hope navbar-expand-md">
+            <div class="row navigation-bars"
+              style="align-items: space-between; vertical-align: middle !important; justify-content: space-between;">
+    
+              <div class="column"
+                style="margin: 0.5%; margin-left: 5%; text-align: center; width: fit-content !important; max-width: unset !important; justify-content: space-between; align-self: left;">
+                <div class="title-nav">Sounding Board</div>
+                <div class="title-nav1" style="font-size: 30px;">|</div>
+                <a class="title-nav1" href="/">Home</a>
+                <div class="title-nav1"  href="./resumeparser.html">Start interview Prep</div>
+              </div>
+            </div>
+          </nav>
+        </div>
+      </header>
+
+      <br>
     <div class="interview-finished">
       <h1>INTERVIEW RESULT</h1>
   </div>
@@ -84,7 +251,6 @@
         {% endfor %}
 
     </table>
-
-   
+    
 </body>
 </html>
