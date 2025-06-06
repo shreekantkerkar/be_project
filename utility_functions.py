@@ -56,7 +56,7 @@ safety_settings = [
 ]
 GOOGLE_API_KEY = os.getenv('GEMINI_API_KEY')  # Replace with your actual API key
 genai.configure(api_key=GOOGLE_API_KEY)
-gem_model = genai.GenerativeModel('gemini-pro',safety_settings=safety_settings)
+gem_model = genai.GenerativeModel('gemini-1.5-flash',safety_settings=safety_settings)
 
 count = 0
 interview_score = 0

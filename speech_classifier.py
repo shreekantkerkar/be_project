@@ -7,7 +7,7 @@ import os
 import shutil
 import librosa
 import tensorflow as tf
-speech_model = tf.keras.models.load_model("ml_folder/Speech-Emotion-Recognition-Model.h5")
+speech_model = tf.keras.models.load_model("ml_folder/Speech-Emotion-Recognition-Model.h5",compile=False)
 
 # try:
 #     shutil.rmtree('songs')

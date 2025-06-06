@@ -6,8 +6,23 @@ from nltk.tokenize import RegexpTokenizer
 from nltk.tokenize import sent_tokenize, word_tokenize
 from nltk.corpus import stopwords
 from sentence_transformers import SentenceTransformer, util
-# nltk.download('averaged_perceptron_tagger')
 import yake
+
+# Download required NLTK resources at the beginning
+try:
+    nltk.data.find('tokenizers/punkt')
+except LookupError:
+    nltk.download('punkt')
+
+try:
+    nltk.data.find('taggers/averaged_perceptron_tagger')
+except LookupError:
+    nltk.download('averaged_perceptron_tagger')
+
+try:
+    nltk.data.find('corpora/stopwords')
+except LookupError:
+    nltk.download('stopwords')
 
 
 def extract_text_from_pdf(pdf_path):
@@ -73,24 +88,29 @@ def ProperNounExtractor(text):
     proper_nouns = []
     print('PROPER NOUNS EXTRACTED :')
 
-    sentences = nltk.sent_tokenize(text)
-    for sentence in sentences:
-        words = nltk.word_tokenize(sentence)
-        words = [word for word in words if word not in set(stopwords.words('english'))]
-        tagged = nltk.pos_tag(words)
-        for (word, tag) in tagged:
-            if tag == 'NNP':  # If the word is a proper noun
-                proper_nouns.append(word)
-    print(words)
-    return words
+    try:
+        sentences = nltk.sent_tokenize(text)
+        for sentence in sentences:
+            words = nltk.word_tokenize(sentence)
+            words = [word for word in words if word not in set(stopwords.words('english'))]
+            tagged = nltk.pos_tag(words)
+            for (word, tag) in tagged:
+                if tag == 'NNP':  # If the word is a proper noun
+                    proper_nouns.append(word)
+        print(words)
+        return words
+    except LookupError:
+        # Fallback if nltk resources still not available
+        print("NLTK resources not found. Using basic tokenization.")
+        words = text.split()
+        print(words)
+        return words
 
 
 def get_experience_section(doc):
     sec_experience = []
     flag = False
     for i in doc:
-        #     print(i)
-        #     print()
         if i == 'Experience' or i == 'EXPERIENCE' or i == 'PROJECTS' or i == 'Projects':
             sec_experience.append(i)
             flag = True
@@ -99,19 +119,9 @@ def get_experience_section(doc):
         elif flag:
             sec_experience.append(i)
 
-    # exp_str = ""
-    # for i in sec_experience:
-    #     exp_str += i
-    #     exp_str += " "
-    # kw_extractor = yake.KeywordExtractor()
-    # keywords = kw_extractor.extract_keywords(exp_str)
-
-
     final_exp = []
-    # print(type(sec_experience[0]))
     for i in sec_experience:
         final_exp.append(i)
-    # print(final_exp)
     set1 = set(final_exp)
     final_exp.clear()
     for i in set1:
@@ -167,19 +177,6 @@ def get_requirements(doc):
     final_exp = ProperNounExtractor(noun_str)
 
     return final_exp
-    # print(req_tokens)
-    # return req_tokens
-    # req_str = ""
-    # for i in req_tokens:
-    #     req_str += i
-    #     req_str += " "
-    # kw_extractor = yake.KeywordExtractor()
-    # keywords = kw_extractor.extract_keywords(req_str)
-    # job_requirements = []
-    # for i in keywords:
-    #     job_requirements.append(i[0])
-    #
-    # return job_requirements
 
 
 def get_summary(text):
@@ -201,22 +198,4 @@ def get_extra(doc):
             flag = True
         elif flag:
             sec_extracurriculars.append(i)
-    # print(certifications)
-    # print(sec_extracurriculars)
     return sec_extracurriculars
-
-
-# def findtags(tag_prefix, tagged_text):
-#     """
-#     Find tokens matching the specified tag_prefix
-#     """
-#     cfd = nltk.ConditionalFreqDist((tag, word) for (word, tag) in tagged_text
-#                                   if tag.startswith(tag_prefix))
-#     return dict((tag, cfd[tag].keys()[:5]) for tag in cfd.conditions())
-#
-#
-# def get_proper_nouns(doc):
-#     lTokens = nltk.pos_tag(doc)
-#     lTagDict = findtags('NNP', lTokens)
-#     for tag in sorted(lTagDict):
-#         print(tag, lTagDict[tag])

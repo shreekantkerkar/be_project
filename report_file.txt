@@ -1315,3 +1315,205 @@ for now we have five questions they ask this is the answer he gave this is the e
 -2
 confidence: 50.0%	 nervousness: 0.0%	 neutral: 100.0%
 
+Number of change Tabs =0
+
+Number of change Tabs =1
+
+Number of change Tabs =0
+
+Number of change Tabs =0
+
+Number of change Tabs =0
+
+Number of change Tabs =0
+
+Number of change Tabs =0
+
+Number of change Tabs =0
+
+Number of change Tabs =0
+
+Number of change Tabs =0
+
+Number of change Tabs =0
+
+Number of change Tabs =0
+
+Number of change Tabs =1
+
+Number of change Tabs =0
+
+Number of change Tabs =0
+
+Number of change Tabs =0
+
+Number of change Tabs =0
+
+14    Explain the concept of component lifecycle in ReactJS.
+thank you
+-7
+23    What are the JSP lifecycle phases?
+JSP life cycle faces are something like we don't know microphone online JSP life cycle method
+37
+confidence: 60.91%	 nervousness: 0.91%	 neutral: 76.36%
+
+Number of change Tabs =5
+
+53    Explain different memory allocation techniques.
+Mistri offer 3:00 hello
+-1
+confidence: 50.0%	 nervousness: 8.96%	 neutral: 82.09%
+
+48    Describe your experience with network troubleshooting.
+Number of change Tabs =2
+
+215    How do you push changes to a remote repository on GitHub?
+how to change your remote control area method
+19
+confidence: 46.67%	 nervousness: 6.67%	 neutral: 93.33%
+
+159    Explain the concept of CSS variables (custom properties).
+Number of change Tabs =3
+
+204    How do you generate API documentation using Postman?
+generate API documentation using postman using various methods like API and all those steps and also API generation is very important like API stands for application program interface using postman
+82
+confidence: 78.57%	 nervousness: 0.0%	 neutral: 42.86%
+
+Given your candidate mentioned several methods for generating API documentation in Postman and highlighted the importance of APIs generally, here are a few follow-up questions, each probing a different aspect of their understanding:
+
+
+**Option 1 (Focus on specifics):**
+
+"You mentioned several methods for generating API documentation within Postman. Can you describe one specific method in detail, including the steps involved, the format of the output (e.g., OpenAPI/Swagger, Markdown), and any limitations or advantages of that particular method?"  This pushes them to go beyond generalities.
+
+
+**Option 2 (Focus on practical application):**
+
+"Imagine you're generating documentation for a new REST API with authentication requirements (e.g., OAuth 2.0). How would you ensure that the generated documentation clearly explains the authentication process to users of your API?" This tests their understanding of practical API design and documentation considerations.
+
+
+**Option 3 (Focus on understanding of APIs):**
+
+"You mentioned that API generation is very important.  Can you elaborate on why this is so important, beyond just making it easier for developers to use the API?  Consider aspects like maintainability, discoverability, and collaboration." This probes their deeper understanding of the role of API documentation in a broader software development context.
+
+
+**Option 4 (Focus on a specific limitation):**
+
+"Postman's API documentation generation features have certain limitations.  Can you think of any scenarios where Postman's built-in documentation generation might not be sufficient, and what alternative tools or approaches you might consider in those cases?" This tests their awareness of the limitations of any given tool and their ability to think outside the box.
+
+
+Choose the option that best fits the overall flow of your interview and the level of detail you want to explore with the candidate. Remember to follow up on their answer with further probing questions to assess their depth of knowledge.
+
+47    Explain HTTP and HTTPS protocols.
+http hypertext transfer protocol is a protocol used for transmitting data over the web allowed in browser and servers to communicate https is hypertext transfer protocol secure is a secure version of the http which
+70
+confidence: 38.46%	 nervousness: 25.64%	 neutral: 71.79%
+
+Here are a few follow-up questions, each probing a different aspect of the candidate's answer and suitable for a real-life interview setting, ranging in difficulty:
+
+**Option 1 (Focus on detail):**
+
+> "You mentioned HTTPS is a secure version of HTTP. Can you elaborate on the specific security mechanisms that HTTPS employs to make it more secure than HTTP?  Mention at least two."  (This probes their understanding of the underlying technology.)
+
+
+**Option 2 (Focus on practical application):**
+
+> "Imagine you're building a web application that handles sensitive user data like credit card information.  Why would you choose HTTPS over HTTP for this application, and what are the potential consequences of choosing HTTP instead?" (This tests their practical understanding and ability to apply their knowledge.)
+
+
+**Option 3 (Focus on limitations):**
+
+> "While HTTPS provides security, it's not a silver bullet.  What are some limitations or potential vulnerabilities even when using HTTPS?" (This assesses their understanding of the limitations and complexities of security.)
+
+
+**Option 4 (More challenging, for senior roles):**
+
+> "Explain the role of certificates and certificate authorities in the HTTPS handshake. What happens if a website's certificate is invalid or compromised?" (This dives into deeper technical aspects.)
+
+
+**Option 5 (Simple Clarification):**
+
+> "You mentioned browsers and servers communicating. Can you briefly explain the client-server model in the context of HTTP requests and responses?" (This checks for a basic understanding of the underlying architecture)
+
+
+The best option will depend on the seniority level of the role and the depth of technical knowledge you expect from the candidate.
+
+Number of change Tabs =1
+
+187    How do you generate API documentation from Postman?
+to generate API documents from postman open your postman collection click on
+72
+confidence: 50.0%	 nervousness: 0.94%	 neutral: 98.11%
+
+The candidate's answer is incomplete and lacks crucial detail.  A good follow-up question would probe their understanding of the process and its limitations.  Here are a few options, ranging in difficulty:
+
+**Option 1 (Beginner/Intermediate):**
+
+> "You mentioned clicking the 'Share' button in Postman.  Can you walk me through the different options available within the share functionality?  Specifically, what are the trade-offs between generating a publicly accessible link versus a more controlled access method?"
+
+
+**Option 2 (Intermediate):**
+
+> "Generating documentation from Postman is convenient, but it's not the only way.  What are some alternative methods or tools you might use to generate API documentation, and what are the advantages and disadvantages of each compared to using Postman's built-in functionality?"
+
+
+**Option 3 (Advanced):**
+
+> "Let's say the API documentation generated from Postman isn't sufficient for your needs. Perhaps it lacks certain detail, or you need to integrate it with a specific documentation platform. How would you approach enhancing the automatically generated documentation to meet these more comprehensive requirements?  Give specific examples."
+
+
+**Option 4 (Focus on Practical Application):**
+
+> "Imagine you've generated API documentation from Postman and shared it with a development team.  A developer comes to you and says they're having trouble understanding a specific endpoint.  How would you use the documentation, and potentially Postman itself, to help them debug the issue and understand the expected behavior of that endpoint?"
+
+
+The choice depends on the seniority level you're aiming for.  Option 1 is a good starting point, while options 2, 3, and 4 delve into progressively more complex aspects of API documentation and development.
+
+Number of change Tabs =2
+
+Number of change Tabs =2
+
+Number of change Tabs =2
+
+Number of change Tabs =1
+
+0    What are the security concerns associated with computer networks?  Explain the concept of firewalls and their role in network security. Describe different types of network attacks.  Explain how DNS works.
+DNS used to beginning service
+18
+confidence: 35.05%	 nervousness: 32.99%	 neutral: 63.92%
+
+Number of change Tabs =0
+
+5    What is CSS used for?
+CSS cascading cascading style sheet is used to design a webpage
+65
+confidence: 45.83%	 nervousness: 8.33%	 neutral: 91.67%
+
+Here are a few follow-up questions you could ask, depending on what aspect of the answer you want to probe further:
+
+**Option 1 (Focus on precision):**
+
+> "You mentioned CSS is used to 'design a webpage.'  That's a broad statement. Can you be more specific about what aspects of webpage design CSS controls?  Give me some examples."
+
+This probes for a deeper understanding beyond a simple definition.
+
+**Option 2 (Focus on the "cascading" aspect):**
+
+> "You correctly identified CSS as a 'cascading style sheet.' Can you explain what 'cascading' means in this context? How does that affect how styles are applied to a webpage?"
+
+This targets a key concept within CSS that the candidate should understand.
+
+**Option 3 (Focus on practical application):**
+
+> "Let's say I want to style a specific heading on my webpage to be a larger font size, a different color, and centered. How would you achieve this using CSS?  Write a simple CSS snippet to demonstrate."
+
+This tests practical knowledge and coding ability.  This is a more challenging question.
+
+**Option 4 (A simpler follow-up):**
+
+> "Can you give me another example of something CSS is used for beyond just the overall design of a webpage?"  (This allows the candidate to show they understand the broader uses of CSS and doesn't assume they have strong practical coding skills)
+
+
+The best option will depend on the overall level of the interview and the candidate's apparent experience.  Start with a less challenging question if you're unsure of their skill level.
+

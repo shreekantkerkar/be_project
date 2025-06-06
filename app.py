@@ -60,7 +60,7 @@ safety_settings = [
 ]
 GOOGLE_API_KEY = os.getenv('GEMINI_API_KEY')  # Replace with your actual API key
 genai.configure(api_key=GOOGLE_API_KEY)
-gem_model = genai.GenerativeModel('gemini-pro',safety_settings=safety_settings)
+gem_model = genai.GenerativeModel('gemini-1.5-flash',safety_settings=safety_settings)
 
 
 # df = pd.read_csv("Question Dataset.csv")
@@ -387,7 +387,14 @@ def parse_resume_route():
     
     skills_string = ', '.join(skills_from_resume)
     # job_desc_skills = ', '.join(valid_skills_from_job_desc)
-    query = skills_string + " generate top 10 interview questions from each skills mentioned. return a list containing all the extracted interview questions, without mentioning the skill name it belong to as the title."
+    query = (
+    "You are an expert interview trainer. The following is a list of technical skills: "
+    + skills_string +
+    ". For each skill, generate 10 high-quality technical interview questions "
+    "that are relevant for job interviews. "
+    "Do not mention the skill name or number them. Just return all the questions in plain text, separated by new lines."
+)
+
     print(query)
     # res = gem_model.generate_content(query)
     # text = res.text
