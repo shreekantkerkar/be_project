@@ -186,7 +186,14 @@ def context(string1, string2):
 def generate_question(question,answer):
     try:
         # Configure the model with your API key (replace with your actual key)
-        text = "A candidate answered for the question : " + question + " and the answer candidate gave was " + answer + " Now I want to ask next question to him based on his answer as i want to mimic real life interview. please generate a question "
+        text = (
+    f"As an interview bot, your task is to generate exactly ONE follow-up technical question "
+    f"based only on this candidate's answer to the previous question. "
+    f"Do not provide explanations, reasoning, options, or markdown. "
+    f"Strictly return a single question line.\n\n"
+    f"Previous question: {question}\n"
+    f"Candidate's answer: {answer}"
+)
         response = gem_model.generate_content(text)
         return response.text
     except Exception as e:
@@ -270,7 +277,7 @@ def next_question_ask(data,next_question_to_ask,driver):
     if question_flag == False:
         return interview_score
     print(count)
-    if count>5:
+    if count>3:
         return interview_score
     else:
         # temp_data = data[(data['Difficulty'] == difficulty)]
@@ -351,60 +358,150 @@ def next_question(similarity, x, data, driver):
         next_question_ask(data,question,driver)
 
 
+# def ask_first_question(data, c, driver):
+#     global count
+#     count = c
+#     x = data.sample()
+    
+#     # csv_file_path = 'questions_csv.csv'
+#     # total_questions = count_records(csv_file_path)
+#     # print("len(x)")
+#     # print(total_questions)
+#     # print(x)
+#     first_question = x['Question'].to_string()
+#     print("first_question")
+#     print(first_question)
+#     answer = gem_model.generate_content(first_question)
+#     first_answer = answer.text
+#     print("first_answer")
+#     print(first_answer)
+#     # first_answer = x['Actual Answer'].to_string()
+#     if first_question in asked:
+#         ask_first_question(data, c,driver)
+#     print(first_question)
+#     asked.append(first_question)
+#     write_to_file(first_question)
+#     text_to_speech(first_question)  # ask question
+#     candidate_response = speech_to_text()
+    
+#     with open("speech_result.txt", "w") as result_file:
+#         result_file.write(candidate_response)
+#     write_to_file(candidate_response)
+#     candidate_answers.append(candidate_response)
+#     print("print(candidate_response)")
+#     print(candidate_response)
+#     #speech is recorded and converted to text
+#     # print("hi" + str(count))
+#     similarity = context(first_answer, candidate_response)
+#     write_to_file(str(similarity))
+#     similartiy_score.append(similarity)
+#     print("similarity")
+#     print(similarity)
+    
+#     # generating imporved answer
+#     query = first_question + candidate_response + " in an interview oral how the answer can be improved"
+   
+#     improved_answer = generate_improved_answer(query)
+#     expected_answer = improved_answer
+    
+#     candidate_data['questions_asked'].append(first_question)
+#     candidate_data['candidate_answers'].append(candidate_response)
+#     candidate_data['similarity_score'].append(similarity)
+#     candidate_data['expected_answers'].append(expected_answer)
+#     emotions = face_functions.append_face_to_file()
+#     candidate_data['emotions'].append(emotions)
+#     next_question(similarity, x, data, driver)
+#     return interview_score
+
+
 def ask_first_question(data, c, driver):
     global count
     count = c
-    x = data.sample()
-    
-    # csv_file_path = 'questions_csv.csv'
-    # total_questions = count_records(csv_file_path)
-    # print("len(x)")
-    # print(total_questions)
-    # print(x)
-    first_question = x['Question'].to_string()
-    print("first_question")
-    print(first_question)
-    answer = gem_model.generate_content(first_question)
-    first_answer = answer.text
-    print("first_answer")
-    print(first_answer)
-    # first_answer = x['Actual Answer'].to_string()
+
+    if data.empty:
+        print("❌ No questions to ask. Ensure questions_csv.csv is loaded or Gemini fallback worked.")
+        return 0
+
+    try:
+        x = data.sample()
+        first_question = x.iloc[0]['Question']
+    except Exception as e:
+        print(f"❌ Error selecting first question: {e}")
+        return 0
+
     if first_question in asked:
-        ask_first_question(data, driver)
+        print("⚠️ Question already asked. Retrying...")
+        return ask_first_question(data, c, driver)
+
+    print("first_question:")
     print(first_question)
+
+    # Ask Gemini for expected answer
+    try:
+        response = gem_model.generate_content(first_question)
+        first_answer = response.text.strip()
+        if not first_answer or len(first_answer.split()) < 3:
+            print("❌ Gemini returned an invalid or too short answer.")
+            return 0
+    except Exception as e:
+        print(f"❌ Gemini failed to generate answer: {e}")
+        return 0
+
+    print("first_answer:")
+    print(first_answer)
+
+    # Ask the question
     asked.append(first_question)
     write_to_file(first_question)
-    text_to_speech(first_question)  # ask question
+    text_to_speech(first_question)
+
+    # Get candidate response
     candidate_response = speech_to_text()
-    
+    if not candidate_response:
+        print("❌ No speech detected from candidate.")
+        return 0
+
     with open("speech_result.txt", "w") as result_file:
         result_file.write(candidate_response)
+
     write_to_file(candidate_response)
     candidate_answers.append(candidate_response)
-    print("print(candidate_response)")
+
+    print("Candidate Response:")
     print(candidate_response)
-    #speech is recorded and converted to text
-    # print("hi" + str(count))
+
+    # Compare answers
     similarity = context(first_answer, candidate_response)
     write_to_file(str(similarity))
     similartiy_score.append(similarity)
-    print("similarity")
-    print(similarity)
-    
-    # generating imporved answer
-    query = first_question + candidate_response + " in an interview oral how the answer can be improved"
-   
-    improved_answer = generate_improved_answer(query)
-    expected_answer = improved_answer
-    
+
+    print("Similarity:", similarity)
+
+    # Improve answer using Gemini
+    try:
+        query = (
+            f"{first_question} {candidate_response} "
+            f"In an interview, how can this answer be improved?"
+        )
+        improved_answer = generate_improved_answer(query)
+    except Exception as e:
+        print(f"❌ Failed to generate improved answer: {e}")
+        improved_answer = "No suggestions available."
+
+    # Record analytics
     candidate_data['questions_asked'].append(first_question)
     candidate_data['candidate_answers'].append(candidate_response)
     candidate_data['similarity_score'].append(similarity)
-    candidate_data['expected_answers'].append(expected_answer)
+    candidate_data['expected_answers'].append(improved_answer)
+
+    # Facial emotion logging
     emotions = face_functions.append_face_to_file()
     candidate_data['emotions'].append(emotions)
+
+    # Move to next
     next_question(similarity, x, data, driver)
     return interview_score
+
 
 # def ask_first_question(data, c, driver):
 #     global count
@@ -598,3 +695,31 @@ def write_to_file(data):
 #     if (len(face_properties)!=0 ):
 #             analyticsDict[face_properties[0]['label']] +=1
         
+
+
+def generate_gemini_questions(skills_string, count=5):
+    try:
+        prompt = (
+            "You are an expert interview trainer. Below is a list of technical skills:\n"
+            f"{skills_string}\n\n"
+            f"Generate exactly {count} high-quality technical interview questions "
+            "that are relevant to these skills. "
+            "Do not include explanations, titles, markdown formatting, or numbering. "
+            "Return only the questions, one per line."
+        )
+
+        res = gem_model.generate_content(prompt)
+        questions = [q.strip() for q in res.text.strip().split("\n") if q.strip() and "?" in q]
+
+        if questions:
+            df = pd.DataFrame({'Question': questions})
+            df.to_csv("questions_csv.csv", index_label='Question Number')
+            print(f"✅ Gemini generated and saved {len(questions)} questions.")
+            return questions
+        else:
+            print("❌ Gemini returned no valid questions.")
+            return []
+
+    except Exception as e:
+        print(f"❌ Gemini error: {e}")
+        return []

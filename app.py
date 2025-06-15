@@ -64,7 +64,25 @@ gem_model = genai.GenerativeModel('gemini-1.5-flash',safety_settings=safety_sett
 
 
 # df = pd.read_csv("Question Dataset.csv")
-df = pd.read_csv("questions_csv.csv")
+df = pd.read_csv("questions_csv.csv") if os.path.exists("questions_csv.csv") else pd.DataFrame()
+
+if df.empty:
+    print("⚠️ questions_csv.csv is empty. Generating fallback questions using Gemini.")
+    from utility_functions import generate_gemini_questions
+
+    skills_string = ', '.join(skills_from_resume)  # already available in your code
+    fallback_questions = generate_gemini_questions(skills_string, count=5)
+    
+    if fallback_questions:
+        df = pd.DataFrame({'Question': fallback_questions})
+    else:
+        print("❌ Failed to generate questions via Gemini.")
+        
+if df.empty:
+    print("❌ ERROR: questions_csv.csv is empty. Please provide valid questions.")
+else:
+    print(f"✅ Loaded {df.shape[0]} questions.")
+    print(df.head())
 pd.set_option('display.max_colwidth', None)
 
 app = Flask(__name__)
@@ -387,6 +405,7 @@ def parse_resume_route():
     
     skills_string = ', '.join(skills_from_resume)
     # job_desc_skills = ', '.join(valid_skills_from_job_desc)
+    print(skills_string)
     query = (
     "You are an expert interview trainer. The following is a list of technical skills: "
     + skills_string +
@@ -412,8 +431,13 @@ def parse_resume_route():
 
     # Save the DataFrame to a CSV file
     csv_file_path = 'questions_csv.csv'
-    df.to_csv(csv_file_path, index_label='Question Number', mode='w')
-        
+    if all_questions:
+        df = pd.DataFrame({'Question': all_questions})
+        df.to_csv('questions_csv.csv', index_label='Question Number')
+        print("✅ Saved new questions to CSV.")
+    else:
+        print("❌ No questions generated. Skipping CSV write.")
+
     return render_template('resume_parser.html', entities=result,questions=all_questions)
 
 

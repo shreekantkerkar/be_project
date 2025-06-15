@@ -1517,3 +1517,304 @@ This tests practical knowledge and coding ability.  This is a more challenging q
 
 The best option will depend on the overall level of the interview and the candidate's apparent experience.  Start with a less challenging question if you're unsure of their skill level.
 
+Number of change Tabs =4
+
+Number of change Tabs =2
+
+Number of change Tabs =0
+
+Number of change Tabs =4
+
+Number of change Tabs =2
+
+Number of change Tabs =1
+
+2    You are tasked with extending an existing, large object-oriented codebase.  How would you approach understanding its design and adding new functionality without introducing instability or breaking existing features?  What tools or techniques would you employ?
+object oriented college
+31
+confidence: 20.45%	 nervousness: 59.09%	 neutral: 40.91%
+
+1    Explain how you would design a class hierarchy for a system managing different types of bank accounts (checking, savings, etc.), considering features like interest calculations and transaction limits.  Focus on the principles of encapsulation and polymorphism.
+encapsulation in polymorphism are two objectives
+40
+confidence: 28.93%	 nervousness: 42.14%	 neutral: 57.86%
+
+1    Explain how you would design a class hierarchy for a system managing different types of bank accounts (checking, savings, etc.), considering features like interest calculations and transaction limits.  Focus on the principles of encapsulation and polymorphism.
+Number of change Tabs =1
+
+Number of change Tabs =0
+
+3    Describe your experience working with React's component lifecycle methods.  Give a specific example where understanding these methods was crucial to solving a problem in a React application.
+react components life cycle methods includes various methods
+62
+confidence: 49.19%	 nervousness: 5.69%	 neutral: 90.24%
+
+Here are a few follow-up questions you could ask, depending on what aspect of the candidate's inadequate answer you want to explore further:
+
+**Option 1 (Focus on specifics):**
+
+> "You mentioned React component lifecycle methods. Can you name a few of these methods and briefly describe when they are called?  Let's start with `componentDidMount`."
+
+This probes for basic knowledge and avoids abstract discussion.
+
+
+**Option 2 (Focus on practical application):**
+
+> "Your answer was a bit general.  Can you describe a *specific* situation where your understanding of a particular lifecycle method (e.g., `componentDidUpdate`, `componentWillUnmount`) was essential to correctly building or optimizing a React component?  Please be as detailed as possible, including the problem you faced and how the lifecycle method helped you solve it."
+
+This pushes for concrete examples, mirroring a real-world scenario.
+
+
+**Option 3 (Focus on problem-solving):**
+
+> "Let's say you're building a component that fetches data from an API.  Which lifecycle method would you use to make the API call, and why? What would you do with the data once it's received?  How would you handle potential errors?"
+
+This presents a common problem and assesses their application of lifecycle methods within a realistic context.
+
+
+**Option 4 (A more challenging question):**
+
+> "React's lifecycle methods have changed significantly with the introduction of functional components and Hooks. How do you approach managing side effects and state updates in functional components without relying on lifecycle methods like `componentDidMount` or `componentDidUpdate`?"
+
+This tests if they understand the move away from class components and the modern approach to React development.
+
+The best option will depend on the seniority level you're interviewing for.  Option 1 is good for junior candidates, while options 3 and 4 are better for mid-level and senior candidates, respectively. Option 2 is a good general follow-up question.
+
+Number of change Tabs =1
+
+Number of change Tabs =2
+
+Number of change Tabs =1
+
+What is a certificate authority and what is its role in HTTPS?
+https stands for open text transfer protocol security hypertext transfer protocol security secure
+41
+confidence: 39.22%	 nervousness: 21.55%	 neutral: 78.45%
+
+0    What is the difference between HTTP and HTTPS?
+call https stands for hypertext transfer protocol secure both are kind of organism is protocols but https is a secure protocol which uses a secure socket for transfer
+69
+confidence: 45.88%	 nervousness: 8.25%	 neutral: 91.75%
+
+Can you explain what a "secure socket" is in the context of HTTPS?
+
+a secure socket which security API levels of
+57
+confidence: 46.67%	 nervousness: 6.67%	 neutral: 93.33%
+
+Can you elaborate on what security APIs are used to establish and maintain a secure socket in HTTPS?
+
+in hypertext transfer protocol secure like provide secure line for us to connect with the web server and from web server back to the client
+32
+confidence: 48.64%	 nervousness: 2.73%	 neutral: 97.27%
+
+0    What is the difference between HTTP and HTTPS?
+Number of change Tabs =0
+
+Number of change Tabs =0
+
+Number of change Tabs =0
+
+What is normalization in SQL?
+SQL stands for structured query language normalisation is normalising data normalisation is cleaning the data
+63
+confidence: 47.6%	 nervousness: 4.81%	 neutral: 95.19%
+
+Can you describe the different normal forms and give an example of when you might use third normal form?
+
+Number of change Tabs =1
+
+,What is object-oriented programming?
+Indian programming is a programming paradigm it is design of writing a code where the code is written in the form of classes and objects if different classes which is a custom data type and we can make objects out of their classes
+47
+confidence: 53.78%	 nervousness: 5.04%	 neutral: 82.35%
+
+8    How does HTTP differ from HTTPS?
+https stands for hypertext transfer protocol secure this protocol is more secure https is more secure than http questions and answers
+76
+confidence: 56.45%	 nervousness: 4.3%	 neutral: 78.49%
+
+Can you explain the specific security mechanisms employed by HTTPS?
+
+hypertext transfer protocol security base SSL with secure socket layer or more common in transport layer security data
+68
+confidence: 27.18%	 nervousness: 50.49%	 neutral: 44.66%
+
+Can you elaborate on the differences between SSL and TLS, and how they contribute to HTTPS security?
+
+secure socket layer and TLS is something TLS is transport layer security both are different layers which parallel
+66
+confidence: 28.85%	 nervousness: 42.31%	 neutral: 57.69%
+
+8    How does HTTP differ from HTTPS?
+Number of change Tabs =0
+
+display current box office
+-8
+confidence: 41.18%	 nervousness: 17.65%	 neutral: 82.35%
+
+How does a REST API work?
+hey Siri open
+-2
+confidence: 0%	 nervousness: 0%	 neutral: 0%
+
+1    Explain the concept of inheritance in Java.
+inheritance dynamic dynamic Kaun hota hai dynamic Madhuram
+25
+confidence: 0%	 nervousness: 0%	 neutral: 0%
+
+4    What are the four pillars of OOP?
+opr inheritance polymorphism
+41
+confidence: 0%	 nervousness: 0%	 neutral: 0%
+
+Number of change Tabs =6
+
+,What is object-oriented programming?
+object oriented programming is a programming paradigm where where code is written in terms of classes and objects class is an abstract data type and we make objects of classes
+78
+confidence: 57.37%	 nervousness: 5.26%	 neutral: 74.74%
+
+Can you give an example of polymorphism in object-oriented programming?
+
+polymorphism means more than one formed for example we can say for an ideal student we can say in school his job is to study in home is job is to do daily like that and also polymorphism is compile time and runtime
+48
+confidence: 55.56%	 nervousness: 9.52%	 neutral: 69.84%
+
+7    What is a deadlock in operating systems?
+deadlock is something which abstract locks the operating system you can say if resources lock the resource a and system B as lock another resource B then deadlock happens
+81
+confidence: 64.71%	 nervousness: 2.94%	 neutral: 64.71%
+
+Number of change Tabs =0
+
+How does a REST API work?
+rest API stands for rest application programming interface these are the API is which does the job for us like connect the web server to the client and interact with the database
+61
+confidence: 47.39%	 nervousness: 5.22%	 neutral: 94.78%
+
+Can you describe the different HTTP methods used in REST APIs and their purposes?
+
+the methods used for used in rest API get post get post put delete also http stands for hypertext transfer protocol
+69
+confidence: 48.47%	 nervousness: 3.06%	 neutral: 96.94%
+
+Can you explain the difference between PUT and POST requests?
+
+put request is where we change a part of the part of a data and post is something we replace the data with a new data in the server that's the difference between put and post
+78
+confidence: 45.88%	 nervousness: 8.25%	 neutral: 91.75%
+
+Number of change Tabs =1
+
+What is the role of the OS scheduler?
+voice scheduler is operating systems scheduler which is used to schedule a process which is running in the device operating system
+52
+confidence: 47.94%	 nervousness: 4.12%	 neutral: 95.88%
+
+Number of change Tabs =0
+
+What is the difference between TCP and UDP?
+Number of change Tabs =0
+
+What is multithreading in Python?
+multithreading is python is where multiple Threads of parallelogram inside a single system multi threading is something where multiple Threads like multiple processes Run inside a single single system which performs multiple functions at 110 may be to write the code or save the file
+76
+confidence: 49.07%	 nervousness: 1.85%	 neutral: 98.15%
+
+How does the Global Interpreter Lock (GIL) affect multithreading in Python?
+
+I have no idea regarding this but I surely search for it once the interview gets over
+4
+confidence: 49.06%	 nervousness: 1.89%	 neutral: 98.11%
+
+6    What is the role of the OS scheduler?
+scheduler which schedules different processes inside a system we can say that an Operating System schedules different tasks to be performed by the CPU central Processing Unit
+62
+confidence: 50.0%	 nervousness: 0.0%	 neutral: 100.0%
+
+Number of change Tabs =1
+
+What is the purpose of indexing in a database?
+indexing in a database is a technique used to improve the speed and efficiency of data retrieval operations which is used for faster data entry optimise to any performance efficient search operation and supporting unique uniqueness constraints
+Number of change Tabs =0
+
+What are the ACID properties in a database?
+acid properties in the database are a stands for atomicity C stands for consistency I stands for isolation and D stands for durability all these acid properties form a principal for database to operate
+Number of change Tabs =0
+
+How does a REST API work?
+API is application programming interface these api's are responsible for interacting with the server to control the database or we can say make changes to the database
+Number of change Tabs =4
+
+51
+confidence: 42.16%	 nervousness: 16.18%	 neutral: 83.33%
+
+What are the four pillars of OOP?
+four pillars of opr inheritance polymorphism and inheritance polymorphism
+49
+confidence: 40.1%	 nervousness: 19.8%	 neutral: 80.2%
+
+3    How does a REST API work?
+works on the principle of where the user and server interacts and server manages the database operations for the use of
+28
+confidence: 50.0%	 nervousness: 0.0%	 neutral: 100.0%
+
+3    How does a REST API work?
+Number of change Tabs =1
+
+SBI works on the principle of user interaction the database
+18
+confidence: 50.0%	 nervousness: 0.0%	 neutral: 100.0%
+
+,What is object-oriented programming?
+object oriented programming is a programming paradigm where where the code is written in terms of classes and objects these objects can contain data attributes for properties and methods functions or behaviours that operate on that data
+77
+confidence: 41.83%	 nervousness: 16.35%	 neutral: 83.65%
+
+Can you give an example of polymorphism in object-oriented programming?
+
+is more than one form an example of polymorphism can be we can say polymorphism means many forms in object oriented programming and we can say if we have a class of animal and extend to class which is class dog and class 10 then we have runtime and compile time polymorphism
+43
+confidence: 42.23%	 nervousness: 15.53%	 neutral: 84.47%
+
+8    How does HTTP differ from HTTPS?
+text transfer protocol http stands for hypertext transfer protocol and https stands for hypertext transfer protocol security these are the two protocols which are used to transfer data between the web server and the client but https includes a secure socket layer that is SSL which makes the connection more secure than the traditional http
+81
+confidence: 48.92%	 nervousness: 3.23%	 neutral: 95.7%
+
+Number of change Tabs =0
+
+How does HTTP differ from HTTPS?
+Number of change Tabs =0
+
+What is multithreading in Python?
+multithreading in Python is 7 how many states in the process rates is a integral part of process represents a small part of process which is small part of business on synchronous in the computer to perform better to achieve more reliability of a particular disease
+66
+confidence: 55.11%	 nervousness: 0.0%	 neutral: 89.78%
+
+Can you explain the Global Interpreter Lock (GIL) in Python and its impact on multithreading?
+
+such processes that must be proper that's why Global International Public School basically it used for lock the Threads that's good
+34
+confidence: 54.49%	 nervousness: 2.86%	 neutral: 85.31%
+
+Number of change Tabs =1
+
+How does a REST API work?
+Forest Department is for the routing purpose using the rest API can we can save various accounting for the next step
+33
+confidence: 20.89%	 nervousness: 68.35%	 neutral: 21.52%
+
+8    How does HTTP differ from HTTPS?
+Number of change Tabs =0
+
+Explain the concept of inheritance in Java.
+explain explain ability extend keywords parent child relationship superclass subclass is a relationship method overriding volume of prism single inheritance multilevel inheritance hierarchical engineering
+59
+confidence: 43.16%	 nervousness: 14.53%	 neutral: 84.62%
+
+Can you give a code example demonstrating multilevel inheritance in Java and explain how method overriding works within that example?
+
+Number of change Tabs =0
+
